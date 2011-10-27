@@ -1,0 +1,159 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[finnish]{babel}
+\usepackage{ae,aecompl}
+\addto\captionsfinnish{\def\refname{Lähteet}}
+\usepackage[dvips]{graphicx} 
+
+\title{XMPP-pikaviestinprotokolla}
+\author{Tuomas Virtanen\\ \texttt{tutavirt@cc.jyu.fi}}
+\date{17.3.2008}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+XMPP on monipuolinen ja helposti laajennettava, avoimiin standardeihin perustuva pikaviestinprotokolla. 
+Sitä voidaan käyttää paitsi puhtaiden tekstiviestien lähettämiseen ja läsnäolon tarkkailuun, myös 
+esimerkiksi tiedostonsiirtoihin ja internet-puheluihin. Tässä tutkimuksessa tutustutaan protokollan 
+teknisiin ominaisuuksiin sekä laajennettavuuteen ja tehdään vertailuja muihin toteutuksiin.
+\end{abstract}
+
+\section{Johdanto}
+
+Pikaviestinnästä on tullut osa useiden tietokoneen, ja vähitellen myös
+erilaisten mobiililaitteiden käyttäjien arkea~\cite[s. 13]{salin}~\cite{gartner1} . Erilaisia pikaviestimiä on useita, 
+ja niillä on käytössä omat viestintäprotokollansa. Tästä johtuukin nykymallin mukaisen 
+pikaviestinnän suurin ongelma: eri verkkoihin tarvitaan usein oma ohjelmansa. Joskus ongelmana 
+on myös se, että pikaviestinverkkon protokolla on jollain tavalla suljettu tai salattu. 
+Tämä tarkoittaa sitä, että niitä ei voida toteuttaa muihin pikaviestimiin ilman protokollan 
+purkua.
+
+XMPP-protokolla pyrkii tuomaan käyttöön yhtenäisen standardin yritysten ja yksityisten henkilöiden
+pikaviestintätarpeisiin. Aiemmin protokolla tunnettiin nimellä Jabber, kunnes Jabber Software Foundation
+luovutti protokollan Internet Engineering Task Force -organisaatiolle (IETF)~\cite{xmpporg1}. Nykyään protokollaa kehittääkin IETF:n
+muodostama työryhmä nimeltään XMPP Working Group. Kehityksessä protokolla on ollut vuodesta 1999 alkaen,
+jonka jälkeen siihen on tasaisesti luotu lisää laajennuksia, kuten Googlen Jingle-projekti~\cite{xep0166} multimedian 
+siirtoon. XMPP:aa tukee tai käyttää pääasiallisena alustanaan jo monta tunnettua pikaviestintä, kuten Google Talk, 
+Pidgin ja Kopete.
+
+\section{Protokollan rakenne ja laajennettavuus}
+
+XMPP-protokolla on nykyisen muotisuuntauksen mukaan XML-pohjainen. Protokollan pohjalla on 
+RFC-dokumentti~\cite{rfc3920}, jossa määritellään siirtotason protokolla, oletusportit sekä
+tuetut salaukset. Viimeisimmässä vedoksessa ainoaksi sallituksi siirtoprotokollaksi mainitaan
+TCP, ja sallituksi salausmenetelmiksi TLS ja SASL.
+Perusrakenteen päälle voidaan laajennuksilla liittää erilaisia ominaisuuksia, kuten
+puhtaiden tekstiviestien lähettäminen~\cite{rfc3921}, VoIP-ominaisuudet~\cite{xep0166} 
+ja tiedostonsiirto~\cite{xep0966}. Erilaisia laajennuksia löytyy kymmenia, joista kaikki ovat
+toistaiseksi kehityksessä tai matkalla standardiksi. 
+
+Tiedon lähettämiseen ja vastaanottamiseen XMPP käyttää XML-tietovirtoja. Jokainen yhteys alkaa ja loppuu
+stream-elementillä, jonka sisällä ensimmäiseksi neuvotellaan yhteyden tyyppi ja salaus. Laajennusten 
+lähettämät paketit ovat lapsitasolla suoraan stream-elementin alla, ja jokainen laajennuksien tietovirtaan 
+lähettämä paketti voi myös sisältää lapsielementtejä. Kun asiakas on neuvotellut palvelimeen halutun 
+muotoisen yhteyden, voidaan virrassa kuljettaa laajennuksen nimiavaruuden määrittelemiä paketteja rajaton 
+määrä yhteyden sulkemiseen asti. Mikäli vaaditaan kaksisuuntainen siirto, avataan yhteys myös palvelimesta 
+asiakkaaseen. 
+
+\section{Verkko}
+
+Perustaltaan XMPP-verkko on hajautettu, eli käytössä ei ole yhtä varsinaista kirjautumispalvelinta.
+Yhden kirjautumispalvelimen sijaan käytetään useita palvelimia, jollaisen kuka tahansa voi luoda. 
+Käytännössä tämä tarkoittaa sitä, että jos yksi palvelin menee nurin, rajoittuu vika vain tähän palvelimeen
+rekisteröityneiden yhteyksiin. Muu verkko jatkaa kuitenkin toimintaansa normaalisti. Esimerkiksi tunnetut 
+pikaviestinohjelmat MSN ja Yahoo messenger käyttävät yhtä palvelinkokonaisuutta koko verkkonsa ylläpitoon, 
+jolloin vikasietoisuus pienenee.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{servut}
+	\caption{XMPP-verkon rakenne~\cite{helxmpp}} 
+	\label{servut1}
+\end{figure}
+
+Palvelimien hajautuksesta syntyy myös pieniä ongelmia käyttäjien tunnistamisessa ja viestien välittämisessä.
+Yhdellä keskitetyllä palvelimella voitaisiin lähettäjä ja vastaanottaja turvallisesti varmentaa, ja viesti 
+siirtää koneiden välillä hyvin yksinkertaisesti. Esimerkiksi MSN ja Yahoo messenger käyttävät tällaista yhden
+palvelimen ratkaisua. XMMP-verkossa joudutaan kuitenkin turvautumaan eksoottisempiin
+menetelmiin muunmuassa käyttäjätunnusten osalla. Kaikille käyttäjille annetaan rekisteröitymisen yhteydessä tunnus
+muodossa käyttäjätunnus@palvelinosoite.fi, jolloin viesti on lähetettävissä oikealle palvelimelle ja käyttäjälle.
+Käyttäjätunnuksiin voidaan myös lisätä resurssitunniste muodossa käyttäjätunnus@palvelinosoite.fi/tietokone. 
+Tästä on hyötyä silloin, kun saman käyttäjätunnuksen alle halutaan  määrittää useampia laitteita, 
+kuten esimerkiksi älypuhelin tai kämmentietokone. 
+
+Hajautetusta luonteestaan johtuen XMPP-palvelin voidaan myös sillata~\cite{rfc3922} muita protokollia käyttäviin
+pikaviestiverkkoihin. Tällainen siltapalvelin vastaanottaa XMPP-tyyppiset viestit, muokkaa ne 
+kohdeverkon tarvitsemaan muotoon, ja lähettää ne eteenpäin. Yhteyden salaus toimii tällöin luonnollisesti
+vain, mikäli kohdeverkkokin tukee sitä.
+
+\section{Yhteenveto}
+
+Vaikka XMPP ei varsinaisesti vielä ole standardi, on sillä jo laaja tukijapohja. Protokollaa käytetään jo esimerkiksi 
+Google Talk -pikaviestinohjelmassa, kuten myös linux-käyttäjien tuntemassa pidgin-ohjelmassa. Vaikka toistaiseksi 
+yksikään suurista pikaviestinverkkoja ylläpitävistä yhtiöistä, kuten Microsoft ja Yahoo, eivät ole XMPP:tä 
+käyttöön ottaneet, ovat nekin jo raottaneet pikaviestinohjelmiaan muille protokollille~\cite{ms1}. Suurempaa muutosta
+odotellessa on XMPP:aa käyttävien pikaviestimien silti helppo jutella näihin verkkoihin siltapalvelimien avulla.
+Koska XMPP on myös yksinkertaisesti laajennettavissa, on se helppo saada toimimaan tulevisuudenkin pikaviestinnän
+luomien vaatimusten kanssa. 
+
+\begin{thebibliography}{99}
+
+\bibitem{rfc3920}
+P. Saint-Andre, \textit{"Extensible Messaging and Presence Protocol (XMPP): Core"},
+Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/rfcs/rfc3920.html}>,
+lokakuu 2004, RFC-3920.
+
+\bibitem{rfc3921}
+P. Saint-Andre, \textit{"Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence"},
+Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/rfcs/rfc3921.html}>,
+lokakuu 2004, RFC-3921.
+
+\bibitem{rfc3922}
+P. Saint-Andre, \textit{"Mapping the Extensible Messaging and Presence Protocol (XMPP) to Common Presence and Instant Messaging (CPIM)"},
+Saatavilla osoitteesta <URL: \texttt{http://tools.ietf.org/html/rfc3922}>,
+lokakuu 2004, RFC-3922.
+
+\bibitem{helxmpp}
+Mikko Laukkanen, \textit{"Extensible Messaging and Presence Protocol (XMPP)"},
+Saatavilla osoitteesta <URL: \texttt{http://www.cs.helsinki.fi/u/kraatika/Courses/IPsem04s/xmpp.pdf}>, 
+Helsingin yliopisto, viitattu 15.3.2008.
+
+\bibitem{xep0166}
+Scott Ludwig, Joe Beda, Peter Saint-Andre, Robert McQueen, Sean Egan ja Joe hildebrand, 
+\textit{"XEP-0166: Jingle"},
+Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/extensions/xep-0166.html}>,
+29.2.2008.
+
+\bibitem{xep0966}
+Thomas Muldowney, Matther Miller, Ryan Eatmon, \textit{"XEP-0096: File Transfer"},
+Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/extensions/xep-0096.html}>,
+13.4.2004.
+
+\bibitem{salin}
+Peter Salin, \textit{"Mobile Instant Messaging Systems - A Comparative Study and Implementation"},
+Saatavilla osoitteesta <URL: \texttt{http://www.tml.tkk.fi/\~{}anttiyj/Salin-IMPS.pdf}>,
+Teknillinen korkeakoulu, 21.9.2004.
+
+\bibitem{gartner1}
+Laurence Goasduff, Carina Forsling,
+\textit{"Gartner Predicts Instant Messaging Will Be De Facto Tool for Voice, Video and Text Chat by The End of 2011"},
+Saatavilla osoitteesta <URL: \texttt{http://www.gartner.com/it/page.jsp?id=507731}>,
+Gartner, Egham, Iso-Britannia, 21.6.2007.
+
+\bibitem{ms1}
+\textit{"Yahoo! and Microsoft Bridge Global Instant Messaging Communities"},
+Saatavilla osoitteesta <URL: \texttt{http://www.microsoft.com/presspass/press/2006/jul06/07-12IMInteropPR.mspx}>,
+Microsoft, 12.7.2006, Redmond, Yhdysvallat.
+
+\bibitem{xmpporg1}
+\textit{"Jabber Software Foundation Renamed to XMPP Standards Foundation"},
+Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/xsf/press/2007-01-16.shtml}>,
+XMPP standards foundation, 16.1.2007, Denver, Yhdysvallat.
+
+\end{thebibliography}
+
+\end{document}

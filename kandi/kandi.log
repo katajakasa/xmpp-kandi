@@ -1,0 +1,479 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.1.11)  11 JAN 2011 19:10
+entering extended mode
+**kandi.tex
+("C:\Users\Tuomas\Desktop\New folder\kandi\kandi.tex"
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Users\Tuomas\Desktop\New folder\kandi\gradu2.cls"
+Document Class: gradu2 2006/11/03 2.3 JY MIT Gradut
+gradu2 <2006/11/03:2.3> - Tietotekniikan laitoksen graduille
+(D:\Ohjelmat\Miktex\tex\latex\base\article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(D:\Ohjelmat\Miktex\tex\latex\base\size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(D:\Ohjelmat\Miktex\tex\latex\ms\everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)
+(D:\Ohjelmat\Miktex\tex\latex\base\inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(D:\Ohjelmat\Miktex\tex\latex\base\latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+(D:\Ohjelmat\Miktex\tex\latex\base\fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(D:\Ohjelmat\Miktex\tex\latex\base\t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(D:\Ohjelmat\Miktex\tex\latex\geometry\geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(D:\Ohjelmat\Miktex\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(D:\Ohjelmat\Miktex\tex\generic\oberdiek\ifpdf.sty
+Package: ifpdf 2010/01/28 v2.1 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(D:\Ohjelmat\Miktex\tex\generic\oberdiek\ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(D:\Ohjelmat\Miktex\tex\generic\ifxetex\ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks17
+
+(D:\Ohjelmat\Miktex\tex\latex\geometry\geometry.cfg))
+(D:\Ohjelmat\Miktex\tex\generic\babel\babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(D:\Ohjelmat\Miktex\tex\latex\00miktex\bblopts.cfg
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+(D:\Ohjelmat\Miktex\tex\generic\babel\finnish.ldf
+Language: finnish 2007/10/20 v1.3q Finnish support from the babel system
+
+(D:\Ohjelmat\Miktex\tex\generic\babel\babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count90
+\U@D=\dimen111
+)
+Package babel Info: Making " an active character on input line 89.
+)
+(D:\Ohjelmat\Miktex\tex\generic\babel\english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(D:\Ohjelmat\Miktex\tex\latex\tocbibind\tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+
+Package tocbibind Note: Using section or other style headings.
+
+)
+\c@pages=\count91
+ (D:\Ohjelmat\Miktex\tex\latex\base\ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@TotPages=\count92
+\c@gradu@authorcount=\count93
+\c@gradu@author@count=\count94
+\c@gradu@authorcount@=\count95
+\c@gradu@authorl@count=\count96
+\c@gradu@authorlcount@=\count97
+\c@gradu@rohtua@count=\count98
+\c@gradu@yhteystiedotcount=\count99
+\c@gradu@yhteystiedot@count=\count100
+)
+(D:\Ohjelmat\Miktex\tex\latex\psnfss\palatino.sty
+Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(D:\Ohjelmat\Miktex\tex\latex\base\fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(D:\Ohjelmat\Miktex\tex\latex\base\t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(D:\Ohjelmat\Miktex\tex\latex\ae\ae.sty
+Package: ae 2001/02/12 1.3 Almost European Computer Modern
+
+(D:\Ohjelmat\Miktex\tex\latex\base\fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(D:\Ohjelmat\Miktex\tex\latex\base\t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)
+LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
+
+(D:\Ohjelmat\Miktex\tex\latex\ae\t1aer.fd
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+)))
+(D:\Ohjelmat\Miktex\tex\latex\ae\aecompl.sty
+Package: aecompl 1998/07/23 0.9 T1 Complements for AE fonts (D. Roegel)
+)
+(D:\Ohjelmat\Miktex\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(D:\Ohjelmat\Miktex\tex\latex\graphics\graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(D:\Ohjelmat\Miktex\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(D:\Ohjelmat\Miktex\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(D:\Ohjelmat\Miktex\tex\latex\graphics\dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+No file kandi.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+ABD: EveryShipout initializing macros
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(99.58464pt, 441.01773pt, 56.9055pt)
+* v-part:(T,H,B)=(99.58464pt, 645.87756pt, 99.58464pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=441.01773pt
+* \textheight=645.87756pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=27.31465pt
+* \topmargin=27.31465pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 28.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 28.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 28.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 28.
+[1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+
+LaTeX Warning: Reference `TotPages' on page i undefined on input line 28.
+
+[1]
+No file kandi.toc.
+\tf@toc=\write3
+[1
+
+]
+Overfull \hbox (28.5026pt too wide) in paragraph at lines 34--39
+\T1/aer/m/n/12 ti teks-ti-vies-tein, tai mo-ni-puo-li-sem-min ‰‰-nen ja vi-deon
+ avul-la. WWW-ohjelmointitekniikoiden
+ []
+
+
+LaTeX Warning: Citation `skype1' on page 1 undefined on input line 50.
+
+
+Overfull \hbox (19.30731pt too wide) in paragraph at lines 60--65
+[]\T1/aer/m/n/12 Kandidaatintutkielma tar-kas-te-lee ly-hyes-ti pi-ka-vies-tin-
+t‰‰, ja kes-kit-tyy eri-tyi-ses-ti XMPP-
+ []
+
+
+Overfull \hbox (0.9506pt too wide) in paragraph at lines 60--65
+\T1/aer/m/n/12 pikaviestinprotokollaan. Lu-vus-sa 2 k‰-si-tel-l‰‰n pi-ka-vies-t
+in-t‰‰ ylei-ses-ti, ja esi-tel-l‰‰n muu-
+ []
+
+
+LaTeX Warning: Citation `wiki1' on page 1 undefined on input line 69.
+
+[1
+
+] [2]
+
+LaTeX Warning: Citation `skype1' on page 3 undefined on input line 121.
+
+
+LaTeX Warning: Citation `msnp' on page 3 undefined on input line 128.
+
+[3] [4]
+
+LaTeX Warning: Citation `ms1' on page 5 undefined on input line 199.
+
+[5]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 208.
+
+ (D:\Ohjelmat\Miktex\tex\latex\ae\t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
+Underfull \hbox (badness 6204) in paragraph at lines 212--215
+[]\T1/aer/m/n/12 P. Saint-Andre, \T1/aer/m/it/12 "Ex-ten-sible Mes-sa-ging and 
+Pre-sence Pro-tocol (XMPP):
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--215
+\T1/aer/m/it/12 Ins-tant Mes-sa-ging and Pre-sence"\T1/aer/m/n/12 , Saa-ta-vil-
+la osoit-tees-ta <URL:
+ []
+
+
+Underfull \hbox (badness 1442) in paragraph at lines 217--220
+[]\T1/aer/m/n/12 P. Saint-Andre, \T1/aer/m/it/12 "Map-ping the Ex-ten-sible Mes
+-sa-ging and Pre-sence Pro-tocol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--225
+[]\T1/aer/m/n/12 Mikko Lauk-ka-nen, \T1/aer/m/it/12 "Ex-ten-sible Mes-sa-ging a
+nd Pre-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--225
+\T1/aer/m/it/12 sence Pro-tocol (XMPP)"\T1/aer/m/n/12 , Saa-ta-vil-la osoit-tee
+s-ta <URL:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--225
+\T1/aett/m/n/12 http://www.cs.helsinki.fi/u/kraatika/Courses/IPsem04s/xmpp.pdf\
+T1/aer/m/n/12 >,
+ []
+
+
+Underfull \hbox (badness 7832) in paragraph at lines 227--231
+[]\T1/aer/m/n/12 Scott Ludwig, Joe Be-da, Pe-ter Saint-Andre, Ro-bert McQu-een,
+ Sean
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 227--231
+\T1/aer/m/n/12 Egan ja Joe hil-debrand, \T1/aer/m/it/12 "XEP-0166: Jingle"\T1/a
+er/m/n/12 , Saa-ta-vil-la osoit-tees-ta <URL:
+ []
+
+
+Underfull \hbox (badness 2253) in paragraph at lines 233--236
+\T1/aer/m/it/12 fer"\T1/aer/m/n/12 , Saa-ta-vil-la osoit-tees-ta <URL: \T1/aett
+/m/n/12 http://www.xmpp.org/extensions/xep-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--241
+[]\T1/aer/m/n/12 Peter Sa-lin, \T1/aer/m/it/12 "Mo-bi-le Ins-tant Mes-sa-ging S
+ys-tems - A Com-pa-ra-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--241
+\T1/aer/m/it/12 ti-ve Stu-dy and Imple-men-ta-tion"\T1/aer/m/n/12 , Saa-ta-vil-
+la osoit-tees-ta <URL:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--241
+\T1/aett/m/n/12 http://www.tml.tkk.fi/anttiyj/Salin-IMPS.pdf\T1/aer/m/n/12 >, 
+Tek-nil-li-nen kor-kea-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--252
+[]\T1/aer/m/it/12 "Yahoo! and Mic-ro-soft Brid-ge Glo-bal Ins-tant Mes-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--252
+\T1/aer/m/it/12 sa-ging Com-mu-ni-ties"\T1/aer/m/n/12 , Saa-ta-vil-la osoit-tee
+s-ta <URL:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--252
+\T1/aett/m/n/12 http://www.microsoft.com/presspass/press/2006/jul06/07-
+ []
+
+[6]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.261 .../en.wikipedia.org/wiki/Instant_messaging}
+                                                  >,
+? 
+! Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.261 .../en.wikipedia.org/wiki/Instant_messaging}
+                                                  >,
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.263 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.263 
+      
+? 
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--263
+[]\T1/aer/m/n/12 Wikipedia, \T1/aer/m/it/12 "Ins-tant mes-sa-ging"\T1/aer/m/n/1
+2 , Saa-ta-vil-la osoit-tees-ta <URL:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--269
+[]\T1/aer/m/n/12 Salman A. Ba-set, Hen-ning Schulz-rin-ne, \T1/aer/m/it/12 "An 
+Ana-ly-sis of the Sky-pe
+ []
+
+
+Underfull \hbox (badness 6141) in paragraph at lines 265--269
+\T1/aer/m/it/12 Peer-to-Peer In-ter-net Te-lep-ho-ny Pro-tocol"\T1/aer/m/n/12 ,
+ Saa-ta-vil-la osoit-tees-ta <URL:
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.273 ...npiki.msnfanatic.com/index.php/Main_Page}
+                                                  >,
+? 
+! Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.273 ...npiki.msnfanatic.com/index.php/Main_Page}
+                                                  >,
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.275 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.275 
+      
+? 
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--275
+[]\T1/aer/m/n/12 MSNPiki, \T1/aer/m/it/12 "MSN Pro-tocol Ver-sion 8"\T1/aer/m/n
+/12 , Saa-ta-vil-la osoit-tees-ta <URL:
+ []
+
+[7] ("C:\Users\Tuomas\Desktop\New folder\kandi\kandi.aux")
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2160 strings out of 494019
+ 27958 string characters out of 3150419
+ 89168 words of memory out of 3000000
+ 5400 multiletter control sequences out of 15000+200000
+ 25608 words of font info for 55 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 32i,6n,26p,196b,258s stack positions out of 5000i,500n,10000p,200000b,50000s
+{D:/Ohjelmat/Miktex/fonts/enc/dvips/cm-super/cm-super-t1.enc}<D:/Ohjelmat/Mik
+tex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Ohjelmat/Miktex/fonts/type1/p
+ublic/amsfonts/cm/cmmi12.pfb><D:/Ohjelmat/Miktex/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb><D:/Ohjelmat/Miktex/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Ohj
+elmat/Miktex/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Ohjelmat/Miktex/font
+s/type1/public/amsfonts/cm/cmtt12.pfb><D:/Ohjelmat/Miktex/fonts/type1/public/cm
+-super/sfrm1200.pfb>
+Output written on kandi.pdf (10 pages, 115232 bytes).
+PDF statistics:
+ 64 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

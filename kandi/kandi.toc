@@ -1,0 +1,24 @@
+\select@language {english}
+\select@language {finnish}
+\contentsline {section}{\numberline {1}Johdanto}{1}
+\contentsline {section}{\numberline {2}Pikaviestint\"a ja sen protokollat}{2}
+\contentsline {subsection}{\numberline {2.1}Pikaviestinn\"an k\"asitteit\"a}{2}
+\contentsline {subsection}{\numberline {2.2}Pikaviestinn\"an sovellukset}{2}
+\contentsline {section}{\numberline {3}XMPP-Protokolla}{2}
+\contentsline {subsection}{\numberline {3.1}Versiot ja ydinstandardi}{2}
+\contentsline {subsection}{\numberline {3.2}XML-tietovirrat}{2}
+\contentsline {subsection}{\numberline {3.3}S\"akeist\"ot}{3}
+\contentsline {subsection}{\numberline {3.4}Muita protokollia}{3}
+\contentsline {section}{\numberline {4}Verkko}{4}
+\contentsline {subsection}{\numberline {4.1}Palvelin}{4}
+\contentsline {subsection}{\numberline {4.2}Asiakas}{4}
+\contentsline {subsection}{\numberline {4.3}V\"alipalvelin}{5}
+\contentsline {subsection}{\numberline {4.4}Autentikaatio}{5}
+\contentsline {section}{\numberline {5}Laajennukset pikaviestint\"a\"an}{5}
+\contentsline {subsection}{\numberline {5.1}Session aloitus}{5}
+\contentsline {subsection}{\numberline {5.2}Tesktiviestien v\"alitys}{5}
+\contentsline {subsection}{\numberline {5.3}Yst\"av\"alistan hallinta}{5}
+\contentsline {subsection}{\numberline {5.4}Tilatiedot}{5}
+\contentsline {subsection}{\numberline {5.5}VoIP}{5}
+\contentsline {section}{\numberline {6}Yhteenveto}{5}
+\contentsline {section}{L\"ahteet}{6}

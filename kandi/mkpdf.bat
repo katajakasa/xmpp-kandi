@@ -8,5 +8,8 @@ del kandi.ps
 del kandi.toc
 
 pdflatex kandi.tex
+echo "RERUN!"
+pause
+pdflatex kandi.tex
 echo Pdf ok. Suljetaan.
 pause

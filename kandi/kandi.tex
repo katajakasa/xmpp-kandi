@@ -49,19 +49,25 @@ kuin sille suunnitellun ohjelman k‰yttˆˆn. Protokollan m‰‰ritelm‰ voi olla sulje
 salausalgoritmilla. Esimerkiksi MSN Messenger-ohjelman k‰ytt‰m‰n MSNP-protokollan m‰‰ritelm‰ ei ole julkinen. 
 Skype-pikaviestinohjelman k‰ytt‰m‰ protokolla taas on t‰ysin salattu~\cite{skype1} Rijndael-algoritmilla. T‰llaisten ohjelmien 
 k‰ytt‰mi‰ protokollia ei voida toteuttaa muihin pikaviestimiin ilman protokollan purkua, joka esimerkiksi Skypen tapauksessa
-on toistaiseksi ollut menestyksetˆnt‰ useista yrityksist‰ huolimatta.
+on toistaiseksi ollut vain osittain menestyksek‰st‰.
+
+TODO! L‰hde skypen suojauksen murtamiselle, t‰st‰ oli slashdotissa keskustelua jokin aika sitten.
 
 Extensible Messaging and Presence Protocol (XMPP) pyrkii olemaan mahdollisimman avoin ja laajennettavissa oleva,
 yleisk‰yttˆinen protokolla kaikkeen pikaviestint‰‰n. Se hallitsee laajennuksia k‰ytt‰en mm. tekstiviestit, 
 VoIP-puhelut sek‰ tiedostojen siirron k‰ytt‰jien v‰lill‰. XMPP-verkko sallii myˆs esimerkiksi siltaukset
 muihin pikaviestinverkkoihin, kuten Internet Relay Chat (IRC). XMPP-protokollaa k‰ytt‰‰kin nyky‰‰n jo moni
-tunnettu yritys sovelluksissaan, kuten mm. Nokia (Nokia Ovi), Google (Google Talk, Google Wave) sek‰ LiveJournal (LJ Talk).
+tunnettu yritys sovelluksissaan, kuten mm. Nokia (Nokia Ovi), Google (Google Talk, Google Wave), 
+LiveJournal (LJ Talk). Myˆs muunmuassa Facebook paljastaa XMPP-pohjaisen rajapinnan palvelun ulkopuolisille
+k‰ytt‰jille.
 
 Kandidaatintutkielma tarkastelee lyhyesti pikaviestint‰‰, ja keskittyy erityisesti XMPP-pikaviestinprotokollaan.
 Luvussa 2 k‰sitell‰‰n pikaviestint‰‰ yleisesti, ja esitell‰‰n muutamia sen sovelluksia sek‰ protokollia.
 Luvussa 3 esitell‰‰n XMPP-protokollaa ja sen rakennetta. Luvussa 4 perehdyt‰‰n XMPP-verkkoihin ja niiden 
 eroihin muihin pikaviestinverkkoihin n‰hden. Luvussa 5 esitell‰‰n XMPP-protokollan pikaviestint‰‰n tarjoamia
 ominaisuuksia, kuten tekstiviestej‰ ja olotilan hallintaa.
+
+(L‰hteet k‰ytt‰ville yrityksille/sovelluksille)
 
 \section{Pikaviestint‰ ja sen protokollat}
 \subsection{Pikaviestinn‰n k‰sitteit‰}
@@ -73,7 +79,18 @@ viestint‰‰.
 
 \subsection{Pikaviestinn‰n sovellukset}
 
-\section{XMPP-Protokolla}
+Pikaviestint‰‰ k‰ytet‰‰n nyky‰‰n moneen eri tarkoitukseen. Tunnetuinta pikaviestint‰ on luultavasti nuorison keskuudessa,
+jotka ovat jo pitk‰‰n k‰ytt‰neet erilaisia ohjelmia sosiaalisten ryhmiens‰ v‰liseen viestint‰‰n. Nuorison keskuudessa
+suosituimpia sovelluksia nyky‰‰n ovat muunmuassa facebook, MSN Messenger, Skype sek‰ tavallinen tekstiviestint‰. Myˆs muita
+ohjelmia k‰ytet‰‰n.
+
+Tyˆpaikoilla pikaviestint‰‰ k‰ytet‰‰n useing projektien koordinointiin eri tyˆryhmien v‰lill‰ sek‰ viestint‰‰n asiakkaiden
+kanssa. Pikaviestinn‰n t‰rkeimpi‰ osa-alueita n‰iss‰ k‰yttˆtarkoituksissa ovatkin esimerkiksi puhe- sek‰ videopohjainen
+pikaviestint‰.
+
+(Muista lis‰t‰ l‰hde n‰ille!)
+
+\section{XMPP-Protokollan konsepteja}
 
 Extensible Messaging and Presence Protocol (XMPP) on avoin, reaaliaikaiseen pikaviestint‰‰n ja olotilan ilmoittamiseen 
 tarkoitettu XML-pohjainen standardi. Protokollaa kehittiin alun perin nimell‰ Jabber, ja se oli tarkoitettu saman 
@@ -85,6 +102,17 @@ Nyky‰‰n t‰t‰ perustoiminnallisuutta m‰‰ritell‰‰n RFC-dokumenteissa 3920 ja 3921.
 esimerkiksi tiedostojen siirt‰miseen sek‰ VoIP-puheluihin. 
 
 \subsection{Versiot ja ydinstandardi}
+
+XMPP-protokollan kehityksen voidaan katsoa alkaneen vuonna 2000, jolloin julkaistiin XMPP:n edelt‰j‰n, IMPP:n suunnitelma. 
+T‰m‰n j‰lkeen julkistettiin seuraavina vuosina useita suunnitelmadokumentteja muunmuassa salauksen soveltamisesta
+pikaviestint‰‰n, merkkijonojen kuljettamisesta XML-virroissa sek‰ olotilan julkistamisesta.
+
+Protokollan ensimm‰inen virallinen m‰‰ritelm‰ julkaistiin vuonna 2004 RFC-dokumenteissa 3920 - 3923. Seuraavien vuosien
+aikana kehiteltiin useita laajennuksia mm. puheen ja videokuvan kuljettamiseen XMPP-verkossa, kunnes vuonna 2011 julkaistiin
+protokollan seuraava versio RFC-dokumenteissa 6120 - 6122. Uusimmat m‰‰ritelm‰dokumentit ovat k‰yt‰nnˆss‰ viel‰
+tarkastelun alla. T‰ss‰ dokumentissa k‰sitell‰‰nkin protokollaa viel‰ vanhemman, k‰ytetymm‰n ja tuetumman version pohjalta.
+
+(T‰m‰n voisi sanailla paremmin, yhdist‰‰ edellisen kanssa ?)
 
 \subsection{XML-tietovirrat}
 
@@ -110,28 +138,15 @@ ei ole s‰keistˆ. S‰keistˆ sis‰lt‰‰ yleens‰ yhden tai useampia lapsielementtej‰.
 
 Stanzalla on kolme tyyppi‰, joilla m‰‰ritet‰‰n viestint‰mekanismi. "Push"-mekanismi on tarkoitettu yleiseen viestint‰‰n,
 "publish-subscribe" yleiseen palvelimen ja verkon tilan viestitt‰miseen asiakkaille, ja "request-response" taas tiedon 
-vaihtamiseen entiteettien kesken.
-
-\subsection{Muita protokollia}
-
-XMPP-protokollan lis‰ksi on olemassa myˆs muita pikaviestinprotokollia, kuten muunmuassa MSNP, Skype, IRC, SIMPLE 
-ja useita muita. N‰ist‰ SIMPLE suunniteltiin myˆs mahdollisimman yleisk‰yttˆiseksi ja avoimeksi, ja on k‰ytˆss‰ 
-esimerkiksi joissain VoIP-sovelluksissa. 
-
-Skype-protokolla on t‰ysin suljettu ja salattu ~\cite{skype1}. Protokollasta on onnistuttu selvitt‰m‰‰n osia, mutta ainakin
-toistaiseksi sen toiminta on suurilta osin tuntematon. Skype-verkko on rakenteeltaan hajautettu, mutta
-verkkoon kirjautuminen pit‰‰ tehd‰ erillisen Skype Limited-yhtiˆn kirjautumispalvelimen kautta.
-
-MSNP (Microsoft Notification Protocol) on Microsoft-yhtiˆn protokolla pikaviestint‰‰n. Sit‰ k‰ytet‰‰n muunmuassa yhtiˆn 
-omissa Windows Messenger, MSN Messenger ja Windows Live Messenger-sovelluksissa. Myˆs esimerkiksi avoimeen l‰hdekoodiin 
-perustuvat pikaviestinsovellukset Pidgin ja Trillian taitavat viestinn‰n MSNP-protokollan yli. MSNP-verkko on rakenteeltaan 
-keskitetty ~\cite{msnp}, ja kirjautumispalvelimet ovat Microsoftin hallinnassa. Microsoft ei julkaise protokollan m‰‰ritelm‰‰, vaan
-jokainen protokollan versio on k‰ytt‰jien toimesta purettu ja m‰‰ritelm‰t julkaistu ep‰virallisesti. T‰ll‰ hetkell‰ MSNP:n 
-viimeisin julkaistu versio on 19, vaikka kirjautumispalvelimet tukevatkin kaikkia protokollia versiosta 8 l‰htien.
-
-IRC (Internet Relay Chat) on 
+vaihtamiseen entiteettien kesken. "iq"-tyyppinen paketti on tyypilt‰‰n "request-response", kun taas presence ja message-elementit
+ovat "push"-tyyppisi‰.
 
 \section{Verkko}
+
+XMPP-verkko on hajautettu, ja palvelimia voi olla useita. Palvelimet voivat olla yhteydess‰ toisiinsa
+suoraan, tai v‰lipalvelimien v‰lityksell‰. Asiakkaat voivat halutessaan ottaa yhteyden mihin tahansa verkon
+palvelimista.
+
 \subsection{Palvelin}
 
 Vaikka XMPP:n m‰‰ritelm‰ss‰ ei varsinaisesti m‰‰ritell‰ miten viestej‰ l‰hetet‰‰n, 
@@ -171,55 +186,143 @@ sopiviksi. Tunnettuja v‰lipalvelimia on olemassa esimerkiksi SMTP, Internet Rela
 
 Suurimpana ongelmana v‰lipalvelinten k‰ytˆss‰ on se, ett‰ protokollat eiv‰t aina ole t‰ysin yhteensopivia. T‰st‰ 
 seuraa, ett‰ osa viesteiss‰ v‰litetyst‰ tiedosta ei v‰ltt‰m‰tt‰ ole esitett‰viss‰ toisella protokollalla. Ongelmia tulee
-myˆs turvallisuuden kanssa, sill‰ l‰hetettyjen viestien tai muun tiedon siirtyess‰ toiseen pikaviestinverkkoon, ei sen
-turvallisuutta voida en‰‰ taata.
+myˆs turvallisuuden kanssa, sill‰ l‰hetetyn viestin tai muun tiedon siirtyess‰ toiseen pikaviestinverkkoon, sen
+turvallisuutta ei voida en‰‰ taata.
 
-\subsection{Autentikaatio}
+\subsection{Yhteyden suojaus}
 
- - Miten k‰ytt‰j‰ autentikoituu palvelimelle
- - Miten varmistetaan muille palvelimille ?
+XMPP-verkon kaikkien asiakkaiden ja palvelinten on tuettava TLS- ja SASL-metodeja tiedon salaamiseen. Salauksen k‰yttˆ
+ei ole protokollan m‰‰ritelm‰dokumentissa vaadittua, mutta sit‰ suositellaan vahvasti. Myˆs palvelinten v‰listen
+tietoliikenneyhteyksien v‰linen salaus on suositeltua, muttei vaadittua.
 
+XMPP-verkossa m‰‰ritell‰‰n myˆs palvelinten v‰linen "server dialback" eli takaisinsoitto, jota voidaan k‰ytt‰‰
+varmistamaan ett‰ palvelimeen yhdist‰v‰ toinen palvelin on olemassa. Protokollan m‰‰ritelm‰dokumenteissa
+takaisinsoitto m‰‰ritell‰‰nkin hyvin heikoksi suojaukseksi, ja sen k‰yttˆ‰ ei en‰‰ suositella. Palvelinten 
+ei odoteta en‰‰ tukevan kyseist‰ metodia.
 
+\section{XMPP-protokolla}
+\subsection{Asiakkaan autentikointi}
 
-\section{Laajennukset pikaviestint‰‰n}
-\subsection{Session aloitus}
-\subsection{Tesktiviestien v‰litys}
+XMPP-protokollan mukainen yhteys asiakas- ja palvelinsovelluksen v‰lill‰ aloitetaan luomalla XML-virta. 
+Ensimm‰iseksi virrassa suoritetaan mahdollinen salauksen neuvottelu sopivin xml-s‰kein. Salauksen ep‰onnistuessa
+palvelinsovellus voi vastata erilaisilla virheilmoituksilla. (TODO: L‰hde)
+
+Kun haluttu yhteyden salauksen neuvottelu on suoritettu, aloitetaan virallinen yhteys l‰hett‰m‰ll‰ 
+protokollam‰‰ritelm‰n mukainen stream-elementti. Palvelin vastaa elementtiin omalla "stream"-elementill‰‰n
+sek‰ "stream:features"-elementill‰, jossa m‰‰ritell‰‰n autentikointiin k‰ytett‰v‰t suojausmetodit.
+Tavallisesti k‰yt‰ss‰ on ainakin MD5-tiivistealgoritmi sek‰ puhdas teksti. Asiakasohjelma valitsee
+suojausmetodin, ja ilmoittaa siit‰ "auth"-elementiss‰ palvelimelle.
+
+Kun autentikaatiometodin valinta on suoritettu onnistuneesti, aloitetaan itse autentikaatio. Kaikki autentikaatiopaketit
+kuljetetaan asiakkaan ja palvelimen v‰lill‰ "response" ja "challenge"-paketeissa base64-enkoodattuna. Virhetilanteessa
+palvelin voi l‰hett‰‰ myˆs "failure"-elementin virhetietojen kera. L‰hetett‰v‰t elementit riippuvat valitusta 
+autentikaatiometodista. Kun asiakas on vastannut oikein kaikkiin palvelimen l‰hett‰miin haasteisiin, saa asiakas
+palvelimelta "success"-elementin. T‰m‰n j‰lkeen asiakas neuvottelee palvelimenkanssa uuden yhteyden "stream"-elementeill‰,
+ja palvelin l‰hett‰‰ asiakkaalle listan palvelimen osaamista toiminnoista "stream:features"-elementiss‰. N‰it‰ voi olla
+mm. sessionhallinta, pikaviestint‰ ja resurssien sidonta.
+
+\subsection{Sessio ja resurssin sidonta}
+
+Kun yhteys on luotu ja autentikointi on suoritettu, suoritetaan k‰ytt‰j‰n resurssin sidonta palvelimelle. Sidonta on tarpeellista,
+mik‰li palvelin aiemmassa vaiheessa ilmoitti sen ominaisuutena asiakkaalle. Sidonnan tarkoituksena on yhdist‰‰ asiakkaan resurssi, 
+esim. "kotikone" tai "kannettava" palvelimella toimivaksi JID-tunnisteeksi. T‰t‰ varten asiakas l‰hett‰‰ heti autentikoinnin 
+onnistuttua palvelimelle iq-s‰keen, jossa l‰hetet‰‰n sen sis‰isess‰ "resource"-elementiss‰ haluttu resurssi. Asiakas voi antaa
+myˆs palvelimen suorittaa resurssinimen valinnan automaattisesti j‰tt‰m‰ll‰ kent‰n ryhj‰ksi. Palvelimen ei myˆsk‰‰n ole pakko
+hyv‰ksy‰ haluttua resurssia, vaan voi vaihtaa sen toiseen. Resurssin sidonnan onnistuttua palvelin l‰hett‰‰ asiakkaalle iq-s‰keen,
+jonka sis‰isess‰ "jid"-elementiss‰ on asiakkaan t‰ysi JID-tunniste. T‰t‰ tunnistetta k‰ytet‰‰n asiakkaan tunnistamiseen palvelimella
+loppuyhteyden aikana.
+
+Mik‰li palvelin mainostaa asiakkaalle "stream:features"-elementiss‰ sessio-ominaisuutta, ja mik‰li asiakasohjelma haluaa
+k‰ytt‰‰ palvelimen pikaviestint‰- ja tilanhallintaominaisuuksia, on asiakkaan neuvoteltava palvelimen kanssa sessio. T‰m‰ tehd‰‰n
+l‰hett‰m‰ll‰ palvelimelle sopiva iq-s‰e. Palvelin vastaa t‰h‰n joko onnistumista merkkaavalla tyhj‰ll‰ iq-s‰keell‰, 
+tai "error"-elementill‰ varustetulla virhett‰ merkkaavalla iq-s‰keell‰. Mik‰li session luonti ep‰onnistuu, voi se olla merkki
+siit‰, ett‰ asiakkaalla ei ole oikeuksia pikaviestint‰‰n palvelimella. Kun session luonti on suoritettu, sanotaan
+resurssin XMPP-terminologiassa olevan aktiivinen.
+
+\begin{verbatim}
+t‰h‰n esimerkki paketeista (vaiko Liitteeseen ?)
+\end{verbatim}
+
+\subsection{Tekstiviestien v‰litys}
+
+Viestien l‰hetyst‰ varten asiakkaalla on oltava t‰ysi JID. Viestipakettina k‰ytet‰‰n "message"-elementti‰, jolla on oltava
+aina v‰hint‰‰n "to"-parametri viestin vastaanottajan JID:t‰ varten. Elementiss‰ voidaan m‰‰ritell‰ myˆs "from"-parametri, johon
+sijoitetaan viestin l‰hett‰j‰n JID.
+
 \subsection{Yst‰v‰listan hallinta}
 \subsection{Tilatiedot}
 \subsection{VoIP}
 
+\section{Muita protokollia}
+
+XMPP-protokollan lis‰ksi on olemassa myˆs muita pikaviestinprotokollia, kuten muunmuassa MSNP, Skype, IRC, SIMPLE 
+ja useita muita. N‰ist‰ SIMPLE suunniteltiin myˆs mahdollisimman yleisk‰yttˆiseksi ja avoimeksi, ja on k‰ytˆss‰ 
+esimerkiksi joissain VoIP-sovelluksissa. 
+
+Skype-protokolla on t‰ysin suljettu ja salattu ~\cite{skype1}. Protokollasta on onnistuttu selvitt‰m‰‰n osia, mutta ainakin
+toistaiseksi sen toiminta on suurilta osin tuntematon. Skype-verkko on rakenteeltaan hajautettu, mutta
+verkkoon kirjautuminen pit‰‰ tehd‰ erillisen Skype Limited-yhtiˆn kirjautumispalvelimen kautta.
+
+MSNP (Microsoft Notification Protocol) on Microsoft-yhtiˆn protokolla pikaviestint‰‰n. Sit‰ k‰ytet‰‰n muunmuassa yhtiˆn 
+omissa Windows Messenger, MSN Messenger ja Windows Live Messenger-sovelluksissa. Myˆs esimerkiksi avoimeen l‰hdekoodiin 
+perustuvat pikaviestinsovellukset Pidgin ja Trillian taitavat viestinn‰n MSNP-protokollan yli. MSNP-verkko on rakenteeltaan 
+keskitetty ~\cite{msnp}, ja kirjautumispalvelimet ovat Microsoftin hallinnassa. Microsoft ei julkaise protokollan m‰‰ritelm‰‰, vaan
+jokainen protokollan versio on k‰ytt‰jien toimesta purettu ja m‰‰ritelm‰t julkaistu ep‰virallisesti. T‰ll‰ hetkell‰ MSNP:n 
+viimeisin julkaistu versio on 19, vaikka kirjautumispalvelimet tukevatkin kaikkia protokollia versiosta 8 l‰htien.
+
+IRC (Internet Relay Chat) on vuonna 1988 Suomessa kehitetty tekstipohjainen pikaviestinprotokolla. Protokolla on avoin, 
+ja siit‰ on useita versioita sek‰ toteutuksia. Rakenteeltaan IRC on hajautettu. Palvelimet voidaan
+yhdist‰‰ kokonaisuuksiksi eli keskusteluverkoiksi, joilla on nimi (mm. ircnet). Keskusteluverkossa
+voi olla useita keskustelukanavia, joille voi liitty‰. ~\cite{ircrfc}
+
+\section{XMPP-protokollan edut ja heikkoudet}
+
+XMPP-protokolla on t‰ysin avoin, ja kuka tahansa voi k‰ytt‰‰ sit‰ ilman maksuja millek‰‰n taholle. 
+
+XML-pohjaisten protokollien heikkoutena on pakettien suuri koko ja suhteellisen pieni hyˆtysuhde. Viestipakettien koko voi
+olla moninkertainen itse paketissa l‰hetett‰v‰‰n tietoon.
+
+(t‰nne lis‰‰ teksti‰)
+
+
+
 \section{Yhteenveto}
 
-T‰m‰n voisi kirjoittaa uudelleen!
+XMPP on nyky‰‰n jo eritt‰in tuettu standardi, ja soveltuu hyvin erilaisiin pikaviestinn‰n
+k‰yttˆtarkoituksiin. Vaikka protokollaa ei nyky‰‰n viel‰ tuetakaan monissa suurimmista
+pikaviestinohjelmista, se levi‰‰ koko ajan pienempien palveluiden kautta. Protokollan 
+suurin hyˆty onkin sen ilmainen soveltaminen eri tarkoituksiin sek‰ hyv‰n m‰‰ritelm‰n
+kautta saavutettu yhteensopivuus valmiiden sovellusten kanssa. Myˆs muihin pikaviestint‰verkkoihin
+viestiminen on mahdollistettu siltapalvelinten avulla, joten verkon asteittainen p‰ivitt‰minen
+on suhteellisen yksinkertaista. Laajennettavan rakenteensa avulla XMPP-protokolla on valmistautunut
+sopeutumaan myˆs tulevaisuuden pikaviestinn‰n luomiin vaatimuksiin.
 
-Vaikka XMPP ei varsinaisesti viel‰ ole standardi, on sill‰ jo laaja tukijapohja. Protokollaa 
-k‰ytet‰‰n jo esimerkiksi Google Talk -pikaviestinohjelmassa, kuten myˆs linux-k‰ytt‰jien 
-tuntemassa pidgin-ohjelmassa. Vaikka toistaiseksi yksik‰‰n suurista pikaviestinverkkoja 
-yll‰pit‰vist‰ yhtiˆist‰, kuten Microsoft ja Yahoo, eiv‰t ole XMPP:t‰ k‰yttˆˆn ottaneet, 
-ovat nekin jo raottaneet pikaviestinohjelmiaan muille protokollille~\cite{ms1}. Suurempaa 
-muutosta odotellessa on XMPP:aa k‰ytt‰vien pikaviestimien silti helppo jutella n‰ihin 
-verkkoihin siltapalvelimien avulla. Koska XMPP on myˆs yksinkertaisesti laajennettavissa, 
-on se helppo saada toimimaan tulevisuudenkin pikaviestinn‰n luomien vaatimusten kanssa. 
+(Hieman lyhyt viel‰ ...)
+(Lis‰‰ liitteet!)
 
 \begin{thebibliography}{99}
 
 \bibitem{rfc3920}
-P. Saint-Andre, \textit{"Extensible Messaging and Presence Protocol (XMPP): Core"},
+P. Saint-Andre, 
+\textit{"Extensible Messaging and Presence Protocol (XMPP): Core"},
 Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/rfcs/rfc3920.html}>,
 lokakuu 2004, RFC-3920.
 
 \bibitem{rfc3921}
-P. Saint-Andre, \textit{"Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence"},
+P. Saint-Andre, 
+\textit{"Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence"},
 Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/rfcs/rfc3921.html}>,
 lokakuu 2004, RFC-3921.
 
 \bibitem{rfc3922}
-P. Saint-Andre, \textit{"Mapping the Extensible Messaging and Presence Protocol (XMPP) to Common Presence and Instant Messaging (CPIM)"},
+P. Saint-Andre, 
+\textit{"Mapping the Extensible Messaging and Presence Protocol (XMPP) to Common Presence and Instant Messaging (CPIM)"},
 Saatavilla osoitteesta <URL: \texttt{http://tools.ietf.org/html/rfc3922}>,
 lokakuu 2004, RFC-3922.
 
 \bibitem{helxmpp}
-Mikko Laukkanen, \textit{"Extensible Messaging and Presence Protocol (XMPP)"},
+Mikko Laukkanen,
+\textit{"Extensible Messaging and Presence Protocol (XMPP)"},
 Saatavilla osoitteesta <URL: \texttt{http://www.cs.helsinki.fi/u/kraatika/Courses/IPsem04s/xmpp.pdf}>, 
 Helsingin yliopisto, viitattu 15.3.2008.
 
@@ -230,13 +333,15 @@ Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/extensions/xep-0166.htm
 29.2.2008.
 
 \bibitem{xep0966}
-Thomas Muldowney, Matther Miller, Ryan Eatmon, \textit{"XEP-0096: File Transfer"},
+Thomas Muldowney, Matther Miller, Ryan Eatmon, 
+\textit{"XEP-0096: File Transfer"},
 Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/extensions/xep-0096.html}>,
 13.4.2004.
 
 \bibitem{salin}
-Peter Salin, \textit{"Mobile Instant Messaging Systems - A Comparative Study and Implementation"},
-Saatavilla osoitteesta <URL: \texttt{http://www.tml.tkk.fi/\~{}anttiyj/Salin-IMPS.pdf}>,
+Peter Salin, 
+\textit{"Mobile Instant Messaging Systems - A Comparative Study and Implementation"},
+Saatavilla osoitteesta <URL: \texttt{http://www.tml.tkk.fi/anttiyj/Salin-IMPS.pdf}>,
 Teknillinen korkeakoulu, 21.9.2004.
 
 \bibitem{gartner1}
@@ -244,11 +349,6 @@ Laurence Goasduff, Carina Forsling,
 \textit{"Gartner Predicts Instant Messaging Will Be De Facto Tool for Voice, Video and Text Chat by The End of 2011"},
 Saatavilla osoitteesta <URL: \texttt{http://www.gartner.com/it/page.jsp?id=507731}>,
 Gartner, Egham, Iso-Britannia, 21.6.2007.
-
-\bibitem{ms1}
-\textit{"Yahoo! and Microsoft Bridge Global Instant Messaging Communities"},
-Saatavilla osoitteesta <URL: \texttt{http://www.microsoft.com/presspass/press/2006/jul06/07-12IMInteropPR.mspx}>,
-Microsoft, 12.7.2006, Redmond, Yhdysvallat.
 
 \bibitem{xmpporg1}
 \textit{"Jabber Software Foundation Renamed to XMPP Standards Foundation"},
@@ -273,7 +373,11 @@ MSNPiki,
 Saatavilla osoitteesta <URL: \texttt{http://msnpiki.msnfanatic.com/index.php/Main_Page}>,
 viitattu 10.1.2011.
 
-
+\bibitem{ircrfc}
+Jarkko Oikarinen, Darren Reed,
+\textit{"RFC1459 - Internet Relay Chat Protocol"},
+Saatavilla osoitteesta <URL: \texttt{http://tools.ietf.org/html/rfc1459}>,
+viitattu 31.10.2011
 
 \end{thebibliography}
 

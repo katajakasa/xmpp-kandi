@@ -6,8 +6,7 @@
 \usepackage[finnish]{babel}
 \usepackage{ae,aecompl}
 \addto\captionsfinnish{\def\refname{L‰hteet}}
-\usepackage[dvips]{graphicx}
-
+\usepackage[pdftex]{graphicx}
 
 \title{XMPP-pikaviestinprotokolla}
 \setauthor{Tuomas}{Virtanen}
@@ -90,7 +89,7 @@ pikaviestint‰.
 
 (Muista lis‰t‰ l‰hde n‰ille!)
 
-\section{XMPP-Protokollan konsepteja}
+\section{XMPP-Protokolla}
 
 Extensible Messaging and Presence Protocol (XMPP) on avoin, reaaliaikaiseen pikaviestint‰‰n ja olotilan ilmoittamiseen 
 tarkoitettu XML-pohjainen standardi. Protokollaa kehittiin alun perin nimell‰ Jabber, ja se oli tarkoitettu saman 
@@ -147,6 +146,13 @@ XMPP-verkko on hajautettu, ja palvelimia voi olla useita. Palvelimet voivat olla
 suoraan, tai v‰lipalvelimien v‰lityksell‰. Asiakkaat voivat halutessaan ottaa yhteyden mihin tahansa verkon
 palvelimista.
 
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{verkkokuva.png}
+	\caption{XMPP-verkon rakenne} 
+	\label{verkkokuva}
+\end{figure}
+
 \subsection{Palvelin}
 
 Vaikka XMPP:n m‰‰ritelm‰ss‰ ei varsinaisesti m‰‰ritell‰ miten viestej‰ l‰hetet‰‰n, 
@@ -200,7 +206,12 @@ varmistamaan ett‰ palvelimeen yhdist‰v‰ toinen palvelin on olemassa. Protokollan
 takaisinsoitto m‰‰ritell‰‰nkin hyvin heikoksi suojaukseksi, ja sen k‰yttˆ‰ ei en‰‰ suositella. Palvelinten 
 ei odoteta en‰‰ tukevan kyseist‰ metodia.
 
-\section{XMPP-protokolla}
+\section{XMPP-protokollan toteutus}
+
+XMPP-protokollan ydinm‰‰ritelm‰ on hyvin yksinkertainen; siin‰ ei m‰‰ritell‰ esimerkiksi pikaviestint‰‰ tai
+tilanhallintaa. Sen sijaan pikaviestint‰, tilanhallinta, puheviestint‰ sek‰ esimerkiksi videon ja tiedostojen v‰litys
+ovat laajennuksia. Laajennukset m‰‰ritell‰‰n 
+
 \subsection{Asiakkaan autentikointi}
 
 XMPP-protokollan mukainen yhteys asiakas- ja palvelinsovelluksen v‰lill‰ aloitetaan luomalla XML-virta. 
@@ -245,13 +256,43 @@ t‰h‰n esimerkki paketeista (vaiko Liitteeseen ?)
 
 \subsection{Tekstiviestien v‰litys}
 
-Viestien l‰hetyst‰ varten asiakkaalla on oltava t‰ysi JID. Viestipakettina k‰ytet‰‰n "message"-elementti‰, jolla on oltava
-aina v‰hint‰‰n "to"-parametri viestin vastaanottajan JID:t‰ varten. Elementiss‰ voidaan m‰‰ritell‰ myˆs "from"-parametri, johon
-sijoitetaan viestin l‰hett‰j‰n JID.
+Viestien l‰hetyst‰ varten asiakkaalla on oltava t‰ysi JID. Viestipakettina k‰ytet‰‰n message-s‰ett‰, jolla on oltava
+aina v‰hint‰‰n "to"-parametri viestin vastaanottajan JID:t‰ varten. Vastaanottajan JID voi sis‰lt‰‰ resurssin, mik‰li viesti
+on suunnattu vastaanottajan tietylle resurssille. Mik‰li resurssia ei m‰‰ritet‰, suuntautuu viesti vastaanottajan
+kaikkiin resursseihin. Elementiss‰ voidaan m‰‰ritell‰ myˆs "from"-parametri, johon sijoitetaan viestin l‰hett‰j‰n JID.
+Mik‰li l‰hett‰j‰n JID sis‰lt‰‰ resurssinimen, suunnataan takaisin tulevat viestit t‰h‰n resurssiin.
+
+Message-s‰e sis‰lt‰‰ aina "body"-elementin, jossa on kuljetettava viesti. Viestin pituudelle ei teoriassa ole m‰‰ritetty rajaa,
+mutta asiakasohjelmat saattavat itse lyhent‰‰ viesti‰. S‰e voi sis‰lt‰‰ myˆs "thread"-elementin, jolla ilmoitetaan keskustelu,
+johon viesti liittyy. Mik‰li viestiin tai keskusteluun halutaan m‰‰ritt‰‰ aihe, se voidaan l‰hett‰‰ "subject"-elementiss‰. Kun
+s‰e on rakennettu, se voidaan l‰hett‰‰ palvelimelle, ja palvelin hoitaa s‰keen siirron oikealle vastaanottajalle.
 
 \subsection{Yst‰v‰listan hallinta}
+
+Yst‰v‰lista pit‰‰ sis‰ll‰‰n tiedot k‰ytt‰j‰n listalle lis‰‰mist‰ JID-kontakteista. Yst‰v‰listan s‰ilytyst‰ hallitsee palvelin,
+ja asiakas voi pyyt‰‰ sen erikseen palvelimelta. Yst‰v‰listalle voidaan lis‰t‰ k‰ytt‰ji‰ vain, mik‰li lis‰yksen kohde sallii sen.
+Yst‰v‰pyyntˆ‰ kutsutaan XMPP-terminologiassa tilaukseksi ("subscription"). Asiakas suorittaa tilauksen l‰hett‰m‰ll‰ palvelimelle
+sis‰llˆttˆm‰n presence-s‰keen, jonka "type"-parametrina on "subscribe" ja "to"-parametrina lis‰yksen kohteen JID ilman resurssia.
+Vastaanottaja vastaa t‰h‰n l‰hett‰m‰ll‰ vastaavan paketin, jonka "type"-parametrina on joko "subscribed" (tilattu) tai 
+"unsubscribed" (ei tilattu).
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[scale=1.0]{kaverilista.png}
+	\caption{Tyypillinen kontaktilista pikaviestinohjelmassa} 
+	\label{kontaktilista}
+\end{figure}
+
 \subsection{Tilatiedot}
-\subsection{VoIP}
+
+Asiakas voi l‰hett‰‰ yst‰v‰listallaan oleville k‰ytt‰jille tietoja omasta tilastaan, 
+esimerkiksi "poissa" tai "‰l‰ h‰iritse". Asiakas l‰hett‰‰ tilanvaihtopyynnˆn palvelimelle, joka hoitaa sen eteenp‰in yst‰v‰listan 
+kaikille kontakteille. Mik‰li asiakas ei viestit‰ tilaa palvelimelle, voi palvelin myˆs erikseen pyyt‰‰ sit‰. Tilamuutokset 
+l‰hetet‰‰n aina kaikkien kontaktien kaikille resursseille.
+
+Tilanmuutospyyntˆ tehd‰‰n l‰hett‰m‰ll‰ palvelimelle presence-s‰e. Tila ilmoitetaan s‰keess‰ elementiss‰ "show". Asiakas 
+voi myˆs l‰hett‰‰ lis‰tietoja tilasta "status"-elementiss‰. Lis‰tietoelementiss‰ voi olla pitempikin teksti, mutta tilaelementin
+sis‰ltˆ on yleens‰ lyhyt. 
 
 \section{Muita protokollia}
 
@@ -273,17 +314,31 @@ viimeisin julkaistu versio on 19, vaikka kirjautumispalvelimet tukevatkin kaikki
 IRC (Internet Relay Chat) on vuonna 1988 Suomessa kehitetty tekstipohjainen pikaviestinprotokolla. Protokolla on avoin, 
 ja siit‰ on useita versioita sek‰ toteutuksia. Rakenteeltaan IRC on hajautettu. Palvelimet voidaan
 yhdist‰‰ kokonaisuuksiksi eli keskusteluverkoiksi, joilla on nimi (mm. ircnet). Keskusteluverkossa
-voi olla useita keskustelukanavia, joille voi liitty‰. ~\cite{ircrfc}
+voi olla useita keskustelukanavia, joille voi liitty‰ ~\cite{ircrfc}. 
 
 \section{XMPP-protokollan edut ja heikkoudet}
 
+\subsection{Avoimuus}
 XMPP-protokolla on t‰ysin avoin, ja kuka tahansa voi k‰ytt‰‰ sit‰ ilman maksuja millek‰‰n taholle. 
+
+(vertaile avoimuutta muihin, jne)
+
+
+\subsection{Hyˆtysuhde}
 
 XML-pohjaisten protokollien heikkoutena on pakettien suuri koko ja suhteellisen pieni hyˆtysuhde. Viestipakettien koko voi
 olla moninkertainen itse paketissa l‰hetett‰v‰‰n tietoon.
 
 (t‰nne lis‰‰ teksti‰)
 
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{viestipaketti_cmp.png}
+	\caption{Viestipaketin koko eri protokollissa} 
+	\label{viestipaketticmpkuva}
+\end{figure}
+
+\subsection{Suojaus}
 
 
 \section{Yhteenveto}
@@ -358,7 +413,7 @@ XMPP standards foundation, 16.1.2007, Denver, Yhdysvallat.
 \bibitem{wiki1}
 Wikipedia, 
 \textit{"Instant messaging"},
-Saatavilla osoitteesta <URL: \texttt{http://en.wikipedia.org/wiki/Instant_messaging}>,
+Saatavilla osoitteesta <URL: \texttt{http://en.wikipedia.org/wiki/Instant\_messaging}>,
 viitattu 27.11.2010.
 
 \bibitem{skype1}
@@ -370,7 +425,7 @@ Columbia University, New York, Yhdysvallat, 15.9.2004.
 \bibitem{msnp}
 MSNPiki, 
 \textit{"MSN Protocol Version 8"},
-Saatavilla osoitteesta <URL: \texttt{http://msnpiki.msnfanatic.com/index.php/Main_Page}>,
+Saatavilla osoitteesta <URL: \texttt{http://msnpiki.msnfanatic.com/index.php/Main\_Page}>,
 viitattu 10.1.2011.
 
 \bibitem{ircrfc}
@@ -380,5 +435,22 @@ Saatavilla osoitteesta <URL: \texttt{http://tools.ietf.org/html/rfc1459}>,
 viitattu 31.10.2011
 
 \end{thebibliography}
+
+\newpage
+\pagestyle{empty}
+
+\appendix
+
+\section*{Liite 1. Yhteyden hallinta}
+\addtocontents{toc}{
+\protect \contentsline {section}{\hspace{0.5cm}1 Yhteyden hallinta}{}}
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[scale=0.8]{yhteys.png}
+	\caption{Yhteyden hallinta} 
+	\label{yhteyskuva}
+\end{figure}
+
 
 \end{document}

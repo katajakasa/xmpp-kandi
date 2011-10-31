@@ -1,0 +1,5 @@
+MIME-Version: 1.0\r\n
+Content-Type: text/plain; charset=UTF-8\r\n
+X-MMS-IM-Format: FN=Arial; EF=I; CO=ff0000; CS=0; PF=22\r\n
+\r\n
+Moi\r

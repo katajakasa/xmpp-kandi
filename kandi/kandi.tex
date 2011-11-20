@@ -50,8 +50,6 @@ Skype-pikaviestinohjelman k‰ytt‰m‰ protokolla taas on t‰ysin salattu~\cite{skype
 k‰ytt‰mi‰ protokollia ei voida toteuttaa muihin pikaviestimiin ilman protokollan purkua, joka esimerkiksi Skypen tapauksessa
 on toistaiseksi ollut vain osittain menestyksek‰st‰.
 
-TODO! L‰hde skypen suojauksen murtamiselle, t‰st‰ oli slashdotissa keskustelua jokin aika sitten.
-
 Extensible Messaging and Presence Protocol (XMPP) pyrkii olemaan mahdollisimman avoin ja laajennettavissa oleva,
 yleisk‰yttˆinen protokolla kaikkeen pikaviestint‰‰n. Se hallitsee laajennuksia k‰ytt‰en mm. tekstiviestit, 
 VoIP-puhelut sek‰ tiedostojen siirron k‰ytt‰jien v‰lill‰. XMPP-verkko sallii myˆs esimerkiksi siltaukset
@@ -66,8 +64,7 @@ Luvussa 3 esitell‰‰n XMPP-protokollaa ja sen rakennetta. Luvussa 4 perehdyt‰‰n X
 eroihin muihin pikaviestinverkkoihin n‰hden. Luvussa 5 esitell‰‰n XMPP-protokollan pikaviestint‰‰n tarjoamia
 ominaisuuksia, kuten tekstiviestej‰ ja olotilan hallintaa.
 
-(L‰hteet k‰ytt‰ville yrityksille/sovelluksille)
-
+\newpage
 \section{Pikaviestint‰ ja sen protokollat}
 \subsection{Pikaviestinn‰n k‰sitteit‰}
 
@@ -89,6 +86,7 @@ pikaviestint‰.
 
 (Muista lis‰t‰ l‰hde n‰ille!)
 
+\newpage
 \section{XMPP-Protokolla}
 
 Extensible Messaging and Presence Protocol (XMPP) on avoin, reaaliaikaiseen pikaviestint‰‰n ja olotilan ilmoittamiseen 
@@ -102,16 +100,36 @@ esimerkiksi tiedostojen siirt‰miseen sek‰ VoIP-puheluihin.
 
 \subsection{Versiot ja ydinstandardi}
 
-XMPP-protokollan kehityksen voidaan katsoa alkaneen vuonna 2000, jolloin julkaistiin XMPP:n edelt‰j‰n, IMPP:n suunnitelma. 
-T‰m‰n j‰lkeen julkistettiin seuraavina vuosina useita suunnitelmadokumentteja muunmuassa salauksen soveltamisesta
-pikaviestint‰‰n, merkkijonojen kuljettamisesta XML-virroissa sek‰ olotilan julkistamisesta.
+XMPP-protokollan kehityksen voidaan katsoa alkaneen vuonna 2000, jolloin julkaistiin XMPP:n edelt‰j‰n, IMPP:n suunnitelma
+avoimeksi pikaviestint‰protokollaksi. T‰m‰n j‰lkeen julkistettiin seuraavina vuosina useita suunnitelmadokumentteja 
+muunmuassa salauksen soveltamisesta pikaviestint‰‰n, merkkijonojen kuljettamisesta XML-virroissa sek‰ olotilan julkistamisesta.
 
-Protokollan ensimm‰inen virallinen m‰‰ritelm‰ julkaistiin vuonna 2004 RFC-dokumenteissa 3920 - 3923. Seuraavien vuosien
+Protokollan ensimm‰inen virallinen m‰‰ritelm‰ julkaistiin vuonna 2004 RFC-dokumenteissa 3920-3923. Seuraavien vuosien
 aikana kehiteltiin useita laajennuksia mm. puheen ja videokuvan kuljettamiseen XMPP-verkossa, kunnes vuonna 2011 julkaistiin
-protokollan seuraava versio RFC-dokumenteissa 6120 - 6122. Uusimmat m‰‰ritelm‰dokumentit ovat k‰yt‰nnˆss‰ viel‰
+protokollan seuraava versio RFC-dokumenteissa 6120-6122. Uusimmat m‰‰ritelm‰dokumentit ovat k‰yt‰nnˆss‰ viel‰
 tarkastelun alla. T‰ss‰ dokumentissa k‰sitell‰‰nkin protokollaa viel‰ vanhemman, k‰ytetymm‰n ja tuetumman version pohjalta.
 
-(T‰m‰n voisi sanailla paremmin, yhdist‰‰ edellisen kanssa ?)
+XMPP-protokollan ydinm‰‰ritelm‰ on hyvin yksinkertainen. Ytimess‰ ei k‰sitell‰ esimerkiksi pikaviestint‰‰ tai
+tilanhallintaa. Sen sijaan pikaviestint‰, tilanhallinta, puheviestint‰ sek‰ esimerkiksi videon ja tiedostojen v‰litys
+ovat laajennuksia. Laajennukset m‰‰ritell‰‰n tarkemmin XEP-koodilla varustetuissa XMPP-organisaation sis‰isiss‰ 
+m‰‰rittelydokumenteissa.
+
+Laajennusten m‰‰ritelm‰dokumentit k‰yv‰t aina l‰pi tarkan seulonnan. Ne laajennukset jotka palvelevat hyvin asiaansa,
+voivat myˆhemmin p‰‰st‰ mukaan itse protokollan ydinm‰‰ritelm‰‰n. Suurin osa laajennuksista on t‰ll‰ hetkell‰ kuitenkin
+viel‰ suunnitelma- tai testausasteella, ja onpa olemassa kaksi virallista, l‰hinn‰ huumorin kannalta kehitetty‰ 
+laajennustakin. Asiakasohjelmien ei teoriassa ole pakko tukea kaikkia laajennuksia, mutta k‰yt‰nnˆss‰ asiakasohjelmat
+odottavat ett‰ ainakin t‰rkeimm‰t toimivat.
+
+Muutamia huomionarvoisia XMPP-protokollan laajennuksia:
+\begin{itemize}
+  \item XEP-0001: XMPP Extension Protocols. M‰‰rittelee muiden laajennusten vaatimukset.
+  \item XEP-0095: Stream Initiation. Laajentaa xml-streamien k‰yttˆtapoja, jotta niiss‰ voidaan siirt‰‰
+        mm. tiedostoja.
+  \item XEP-0096: SI File Transfer. Tiedostonsiirto-ominaisuudet protokollaan lis‰‰v‰ laajennus. Rakentuu
+        pitk‰lti edellisen laajennuksen lis‰ysten p‰‰lle.
+  \item XEP-0166: Jingle. Laajennus videon, ‰‰nen ja muun datan siirtoa varten. \ldots
+\end{itemize}
+
 
 \subsection{XML-tietovirrat}
 
@@ -140,6 +158,7 @@ Stanzalla on kolme tyyppi‰, joilla m‰‰ritet‰‰n viestint‰mekanismi. "Push"-mekani
 vaihtamiseen entiteettien kesken. "iq"-tyyppinen paketti on tyypilt‰‰n "request-response", kun taas presence ja message-elementit
 ovat "push"-tyyppisi‰.
 
+\newpage
 \section{Verkko}
 
 XMPP-verkko on hajautettu, ja palvelimia voi olla useita. Palvelimet voivat olla yhteydess‰ toisiinsa
@@ -205,12 +224,6 @@ XMPP-verkossa m‰‰ritell‰‰n myˆs palvelinten v‰linen "server dialback" eli takais
 varmistamaan ett‰ palvelimeen yhdist‰v‰ toinen palvelin on olemassa. Protokollan m‰‰ritelm‰dokumenteissa
 takaisinsoitto m‰‰ritell‰‰nkin hyvin heikoksi suojaukseksi, ja sen k‰yttˆ‰ ei en‰‰ suositella. Palvelinten 
 ei odoteta en‰‰ tukevan kyseist‰ metodia.
-
-\section{XMPP-protokollan toteutus}
-
-XMPP-protokollan ydinm‰‰ritelm‰ on hyvin yksinkertainen. Ytimess‰ ei m‰‰ritell‰ esimerkiksi pikaviestint‰‰ tai
-tilanhallintaa. Sen sijaan pikaviestint‰, tilanhallinta, puheviestint‰ sek‰ esimerkiksi videon ja tiedostojen v‰litys
-ovat laajennuksia. Laajennukset m‰‰ritell‰‰n tarkemmin 
 
 \subsection{Asiakkaan autentikointi}
 
@@ -294,6 +307,7 @@ Tilanmuutospyyntˆ tehd‰‰n l‰hett‰m‰ll‰ palvelimelle presence-s‰e. Tila ilmoiteta
 voi myˆs l‰hett‰‰ lis‰tietoja tilasta "status"-elementiss‰. Lis‰tietoelementiss‰ voi olla pitempikin teksti, mutta tilaelementin
 sis‰ltˆ on yleens‰ lyhyt. 
 
+\newpage
 \section{Muita protokollia}
 
 XMPP-protokollan lis‰ksi on olemassa myˆs muita pikaviestinprotokollia, kuten muunmuassa MSNP, Skype, IRC, SIMPLE 
@@ -316,26 +330,33 @@ ja siit‰ on useita versioita sek‰ toteutuksia. Rakenteeltaan IRC on hajautettu. 
 yhdist‰‰ kokonaisuuksiksi eli keskusteluverkoiksi, joilla on nimi (mm. ircnet). Keskusteluverkossa
 voi olla useita keskustelukanavia, joille voi liitty‰ ~\cite{ircrfc}. 
 
+\newpage
 \section{XMPP-protokollan edut ja heikkoudet}
 
 \subsection{Avoimuus}
-XMPP-protokolla on t‰ysin avoin, ja kuka tahansa voi k‰ytt‰‰ sit‰ ilman maksuja millek‰‰n taholle. 
+XMPP-protokolla on t‰ysin avoin, ja kuka tahansa voi k‰ytt‰‰ sit‰ ilman maksuja millek‰‰n taholle. Monet palvelut k‰ytt‰v‰tkin
+protokollaa jo suoraan, tai tarjoavat siltapalvelimen johon XMPP-verkon asiakkaat voivat liitty‰. Siltapalvelimia tarjoavista
+palveluista lˆytyy hyv‰n‰ esimerkkin‰ Facebook~\cite{fbchatapi}.
 
-(vertaile avoimuutta muihin, jne)
-
+Suhteessa esimerkiksi MSNP- tai OSCAR-protokolliin, on XMPP helpompi ottaa k‰yttˆˆn omassa sovelluksessa. Sen koko dokumentaatio
+on julkinen, ja kehitysprosessi on t‰ysin n‰kyv‰ kaikille asiasta kiinnostuneille. Suljetut, niin sanotut yhden yhtiˆn protokollat
+kuten Skypen protokolla, MSNP ja OSCAR ovat vain osittain julkisesti dokumentoituja, ja kaikissa tapauksissa dokumentaatio
+ei ole protokollan kehitt‰neen yhtiˆn julkaisemaa. Lis‰ksi ei ole mit‰‰n takeita siit‰, ett‰ protokollan m‰‰ritelm‰ pysyy samanlaisena
+aina, eik‰ sen kehitykseen useinkaan voi vaikuttaa kehitt‰j‰yhtiˆn ulkopuolelta. Esimerkiksi MSNP- ja Skype-protokollat p‰ivittyv‰tkin
+jatkuvasti. P‰ivitysten syyn‰ on usein ominaisuuksien lis‰‰misen lis‰ksi protokollan purkajien edell‰ pysyminen.
 
 \subsection{Hyˆtysuhde}
 
 XML-pohjaisten protokollien heikkoutena on pakettien suuri koko ja suhteellisen pieni hyˆtysuhde. Viestipakettien koko voi
-olla moninkertainen itse paketissa l‰hetett‰v‰‰n tietoon.
-
-(t‰nne lis‰‰ teksti‰)
+pahimmillaan olla moninkertainen itse paketissa l‰hetett‰v‰‰n tietoon. Kuvassa ~\ref{fig:viestipaketticmpkuva} kuvataan
+standardin viestipaketin kokoa, kun viestin koko on kolme merkki‰ ja paketissa on protokollan kannalta vain kaikkein olennaisin
+tieto.
 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{viestipaketti_cmp.png}
 	\caption{Viestipaketin koko eri protokollissa} 
-	\label{viestipaketticmpkuva}
+	\label{fig:viestipaketticmpkuva}
 \end{figure}
 
 \subsection{Suojaus}
@@ -353,8 +374,8 @@ on suhteellisen yksinkertaista. Laajennettavan rakenteensa avulla XMPP-protokoll
 sopeutumaan myˆs tulevaisuuden pikaviestinn‰n luomiin vaatimuksiin.
 
 (Hieman lyhyt viel‰ ...)
-(Lis‰‰ liitteet!)
 
+\newpage
 \begin{thebibliography}{99}
 
 \bibitem{rfc3920}
@@ -420,13 +441,21 @@ viitattu 10.1.2011.
 Jarkko Oikarinen, Darren Reed,
 \textit{"RFC1459 - Internet Relay Chat Protocol"},
 Saatavilla osoitteesta <URL: \texttt{http://tools.ietf.org/html/rfc1459}>,
-viitattu 31.10.2011
+viitattu 31.10.2011.
 
 \bibitem{extxep}
 Peter Saint-Andre,
 \textit{"XEP-0001: XMPP Extension Protocols"}
 Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0001.pdf}>,
 10.3.2010, XEP-0001.
+
+\bibitem{fbchatapi}
+Facebook Developers,
+\textit{"Facebook Chat API"}
+Saatavilla osoitteesta <URL: \texttt{http://developers.facebook.com/docs/chat}>,
+viitattu 16.11.2011.
+
+
 
 \end{thebibliography}
 

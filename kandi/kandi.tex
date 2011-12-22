@@ -21,7 +21,7 @@ esimerkiksi tiedostonsiirtoihin ja VoIP-puheluihin. Tässä tutkielmassa tutustuta
 teknisiin ominaisuuksiin ja tehdään vertailuja muihin pikaviestinprotokolliin.}
 \keywords{XMPP, Protocol, instant messaging}
 \avainsanat{XMPP, protokolla, pikaviestintä}
-\setdate{31}{10}{2011}
+\setdate{19}{12}{2011}
 \tyyppi{kandidaatintutkielma}
 
 \begin{document}
@@ -73,18 +73,38 @@ viestinnästä kahden tai useamman ihmisen välillä tietokoneiden tai muiden laitte
 Internetin tai muun verkon yli. Pikaviestintä voi monipuolisimmillaan olla myös videon tai äänen välityksellä tapahtuvaa 
 viestintää.
 
-\subsection{Pikaviestinnän sovellukset}
+\subsection{Sovellutukset}
 
 Pikaviestintää käytetään nykyään moneen eri tarkoitukseen. Tunnetuinta pikaviestintä on luultavasti nuorison keskuudessa,
 jotka ovat jo pitkään käyttäneet erilaisia ohjelmia sosiaalisten ryhmiensä väliseen viestintään. Nuorison keskuudessa
-suosituimpia sovelluksia nykyään ovat muunmuassa facebook, MSN Messenger, Skype sekä tavallinen tekstiviestintä. Myös muita
+suosituimpia sovelluksia nykyään ovat muunmuassa facebook, MSN Messenger, Skype sekä puhelimilla tapahtuva tekstiviestintä. Myös muita
 ohjelmia käytetään.
 
 Työpaikoilla pikaviestintää käytetään useing projektien koordinointiin eri työryhmien välillä sekä viestintään asiakkaiden
 kanssa. Pikaviestinnän tärkeimpiä osa-alueita näissä käyttötarkoituksissa ovatkin esimerkiksi puhe- sekä videopohjainen
-pikaviestintä.
+pikaviestintä, sekä ryhmässä että kahdenkeskisesti.
 
-(Muista lisätä lähde näille!)
+\subsection{Muita protokollia}
+
+Tässä tutkielmassa tarkasteltavan XMPP-protokollan lisäksi on olemassa myös muita pikaviestinprotokollia, kuten muunmuassa MSNP, Skype, IRC, SIMPLE 
+ja useita muita. Näistä SIMPLE suunniteltiin myös mahdollisimman yleiskäyttöiseksi ja avoimeksi, ja on käytössä 
+esimerkiksi joissain VoIP-sovelluksissa. 
+
+Skype-protokolla on täysin suljettu ja salattu ~\cite{skype1}. Protokollasta on onnistuttu selvittämään osia, mutta ainakin
+toistaiseksi sen toiminta on suurilta osin tuntematon. Skype-verkko on rakenteeltaan hajautettu, mutta
+verkkoon kirjautuminen pitää tehdä erillisen Skype Limited-yhtiön kirjautumispalvelimen kautta.
+
+MSNP (Microsoft Notification Protocol) on Microsoft-yhtiön protokolla pikaviestintään. Sitä käytetään muunmuassa yhtiön 
+omissa Windows Messenger, MSN Messenger ja Windows Live Messenger-sovelluksissa. Myös esimerkiksi avoimeen lähdekoodiin 
+perustuvat pikaviestinsovellukset Pidgin ja Trillian taitavat viestinnän MSNP-protokollan yli. MSNP-verkko on rakenteeltaan 
+keskitetty ~\cite{msnp}, ja kirjautumispalvelimet ovat Microsoftin hallinnassa. Microsoft ei julkaise protokollan määritelmää, vaan
+jokainen protokollan versio on käyttäjien toimesta purettu ja määritelmät julkaistu epävirallisesti. Tällä hetkellä MSNP:n 
+viimeisin julkaistu versio on 19, vaikka kirjautumispalvelimet tukevatkin kaikkia protokollia versiosta 8 lähtien.
+
+IRC (Internet Relay Chat) on vuonna 1988 Suomessa kehitetty tekstipohjainen pikaviestinprotokolla. Protokolla on avoin, 
+ja siitä on useita versioita sekä toteutuksia. Rakenteeltaan IRC on hajautettu. Palvelimet voidaan
+yhdistää kokonaisuuksiksi eli keskusteluverkoiksi, joilla on nimi. Keskusteluverkossa voi olla useita keskustelukanavia, 
+joille käyttäjä voi liittyä ~\cite{ircrfc}.
 
 \newpage
 \section{XMPP-Protokolla}
@@ -130,16 +150,14 @@ Muutamia huomionarvoisia XMPP-protokollan laajennuksia:
   \item XEP-0166: Jingle. Laajennus videon, äänen ja muun datan siirtoa varten. \ldots
 \end{itemize}
 
-
 \subsection{XML-tietovirrat}
 
 XMPP-standardissa liikenne kuljetetaan yleensä XML-tietovirrassa.
 XML-tietovirtaa voidaan ajatella säiliönä, jota käytetään XML-elementtien kuljettamiseen verkkoentiteettien välillä. 
-Virran alku ilmoitetaan aina XML-tagilla "<stream>", jossa voidaan määritellä attribuutteina myös esimerkiksi käytettävä 
-nimiavaruus ja nerkistö. Virran loppua merkkaa vastakkaisesti tagi "</stream>". Niin kauan kuin XML-virta 
-on olemassa, sen luonut entiteetti voi lähettää määrittämättömän määrän XML-elementtejä vastaanottajalle. XML-tietovirta 
-on aina yksisuuntainen; mikäli vastaanottava pää haluaa lähettää viestejä, pitää sen tätä varten erikseen neuvotella 
-erillinen virta (Response Stream).
+Virran alku ilmoitetaan aina XML-elementillä stream, jossa voidaan määritellä attribuutteina myös esimerkiksi käytettävä 
+nimiavaruus ja nerkistö. Niin kauan kuin XML-virta on olemassa, sen luonut entiteetti voi lähettää määrittämättömän 
+määrän XML-elementtejä vastaanottajalle. XML-tietovirta on aina yksisuuntainen; mikäli vastaanottava pää haluaa
+lähettää viestejä, pitää sen tätä varten erikseen neuvotella  erillinen virta (Response Stream).
 
 XML-tietovirrassa voidaan lähettää XMPP-standardin mukaan lähettää joko XML-säkeistöjä tai yhteyden neuvottelemiseen
 tarvittavia XML-elementtejä. Mikäli entiteetti saa vääränmuotoisen paketin, se hylätään. Yhteyden ja 
@@ -150,13 +168,13 @@ Asiakas-palvelin yhteyksien lisäksi siis palvelin-palvelin yhteydet ovat myös ma
 
 XMPP-protokollassa säkeistö (Stanza) on itsenäinen tietopaketti, joka voidaan lähettää entiteetiltä toiselle XML-virran yli. 
 Säkeistö kuljetetaan aina suoraan XML-virran stream-juurielementin alla, ja voi olla nimeltään "message", "presence" tai "iq".
-Säkeistöjen nimiavaruuden on oltava "jabber:client" tai "jabber:server". Mikä tahansa muu tietovirrassa lähetetty paketti
+Säkeistöjen nimiavaruuden on oltava "jabber:client" tai "jabber:server". Mikään muu tietovirrassa lähetetty paketti
 ei ole säkeistö. Säkeistö sisältää yleensä yhden tai useampia lapsielementtejä.
 
-Stanzalla on kolme tyyppiä, joilla määritetään viestintämekanismi. "Push"-mekanismi on tarkoitettu yleiseen viestintään,
-"publish-subscribe" yleiseen palvelimen ja verkon tilan viestittämiseen asiakkaille, ja "request-response" taas tiedon 
-vaihtamiseen entiteettien kesken. "iq"-tyyppinen paketti on tyypiltään "request-response", kun taas presence ja message-elementit
-ovat "push"-tyyppisiä.
+Säkeistöllä on kolme tyyppiä, joilla määritetään viestintämekanismi. Push-mekanismi on tarkoitettu yleiseen viestintään,
+publish-subscribe yleiseen palvelimen ja verkon tilan viestittämiseen asiakkaille, ja request-response taas tiedon 
+vaihtamiseen entiteettien kesken. Iq-tyyppinen paketti on tyypiltään request-response, kun taas presence ja message-elementit
+ovat push-tyyppisiä.
 
 \newpage
 \section{Verkko}
@@ -193,13 +211,13 @@ Asiakkaan tehtävänä on lähettää viestejä ja tilatietoja palvelimelle, sekä vasta
 Asiakkaan on osattava vähintään avata yhteys XML-viestien lähettämistä ja vastaanottamista varten.
 
 XMPP-verkossa jokaista asiakasta tai päätepistettä kutsutaan entiteetiksi, jolla on aina oma tunnisteensa 
-nimeltään JID. Tunniste on kolmiosainen, esimerkiksi muotoa "<solmu@toimialue/resurssi>". Tunnisteessa 
-toimialue-kenttä määrittelee käytetyn palvelimen osoitteen, "solmu"-kenttä käyttäjän nimen ja "resurssi"-kenttä
+nimeltään JID. Tunniste on kolmiosainen, esimerkiksi muotoa "solmu@toimialue/resurssi". Tunnisteessa 
+toimialue-kenttä määrittelee käytetyn palvelimen osoitteen, solmu-kenttä käyttäjän nimen ja resurssi-kenttä
 käyttäjälle kuuluvan toisen asiakaslaitteen. Protokolla salliikin useampien asiakasohjelmien kirjautumisen 
 samalle palvelimelle samalla käyttäjätunnuksella, kunhan eri ohjelmille määritellään oma kotiosoitteensa. 
 
-Entiteeteille voidaan määrittää myös tärkeystasoja, jolloin esimerkiksi osoitteeseen "<solmu@toimialue/matkapuhelin>" 
-lähetetty viesti menee käyttäjän matkapuhelimeen, mutta osoitteeseen "<solmu@toimialue>" lähetetty viesti ohjautuu 
+Entiteeteille voidaan määrittää myös tärkeystasoja, jolloin esimerkiksi osoitteeseen "solmu@toimialue/matkapuhelin" 
+lähetetty viesti menee käyttäjän matkapuhelimeen, mutta osoitteeseen "solmu@toimialue" lähetetty viesti ohjautuu 
 tärkeimmäksi määriteltyyn asiakasohjelmaan tai laitteeseen.
 
 \subsection{Välipalvelin}
@@ -263,10 +281,6 @@ tai "error"-elementillä varustetulla virhettä merkkaavalla iq-säkeellä. Mikäli s
 siitä, että asiakkaalla ei ole oikeuksia pikaviestintään palvelimella. Kun session luonti on suoritettu, sanotaan
 resurssin XMPP-terminologiassa olevan aktiivinen.
 
-\begin{verbatim}
-tähän esimerkki paketeista (vaiko Liitteeseen ?)
-\end{verbatim}
-
 \subsection{Tekstiviestien välitys}
 
 Viestien lähetystä varten asiakkaalla on oltava täysi JID. Viestipakettina käytetään message-säettä, jolla on oltava
@@ -307,28 +321,43 @@ Tilanmuutospyyntö tehdään lähettämällä palvelimelle presence-säe. Tila ilmoiteta
 voi myös lähettää lisätietoja tilasta "status"-elementissä. Lisätietoelementissä voi olla pitempikin teksti, mutta tilaelementin
 sisältö on yleensä lyhyt. 
 
-\newpage
-\section{Muita protokollia}
+\subsection{Tiedostonsiirto}
 
-XMPP-protokollan lisäksi on olemassa myös muita pikaviestinprotokollia, kuten muunmuassa MSNP, Skype, IRC, SIMPLE 
-ja useita muita. Näistä SIMPLE suunniteltiin myös mahdollisimman yleiskäyttöiseksi ja avoimeksi, ja on käytössä 
-esimerkiksi joissain VoIP-sovelluksissa. 
+XMPP-protokollan laajennuksissa määritellään monta erilaista tapaa siirtää vapaavalintaista binääristä tietoa yhteyden yli.
+Näistä vanhimmat, In-Band Bytestreams (IBB)~\cite{xep0047}, Out of Band Data (OOB)~\cite{xep0066} sekä SOCKS5 Bytestreams~\cite{xep0065}
+laajennukset tarjoavat tavan siirtää tietoa joko erillisen yhteyden tai jo muodostetun XML-virran yli. 
 
-Skype-protokolla on täysin suljettu ja salattu ~\cite{skype1}. Protokollasta on onnistuttu selvittämään osia, mutta ainakin
-toistaiseksi sen toiminta on suurilta osin tuntematon. Skype-verkko on rakenteeltaan hajautettu, mutta
-verkkoon kirjautuminen pitää tehdä erillisen Skype Limited-yhtiön kirjautumispalvelimen kautta.
+OOB-menetelmässä asiakas ilmoittaa vastaanottajalle, että määritetystä paikasta
+on saatavilla tiedosto, joka vastaanottajan pitäisi hakea. Ongelmana tässä menetelmässä on se, että vastaanottajalle ei juurikaan
+tarjota tietoa tiedostosta, ja yhteyden tielle tulevat palomuurit tekevät yhteyden luomisen usein mahdottomaksi.
 
-MSNP (Microsoft Notification Protocol) on Microsoft-yhtiön protokolla pikaviestintään. Sitä käytetään muunmuassa yhtiön 
-omissa Windows Messenger, MSN Messenger ja Windows Live Messenger-sovelluksissa. Myös esimerkiksi avoimeen lähdekoodiin 
-perustuvat pikaviestinsovellukset Pidgin ja Trillian taitavat viestinnän MSNP-protokollan yli. MSNP-verkko on rakenteeltaan 
-keskitetty ~\cite{msnp}, ja kirjautumispalvelimet ovat Microsoftin hallinnassa. Microsoft ei julkaise protokollan määritelmää, vaan
-jokainen protokollan versio on käyttäjien toimesta purettu ja määritelmät julkaistu epävirallisesti. Tällä hetkellä MSNP:n 
-viimeisin julkaistu versio on 19, vaikka kirjautumispalvelimet tukevatkin kaikkia protokollia versiosta 8 lähtien.
+SOCKS5 Bytestreams-laajennus määrittelee laajemman tavan siirtää tietoa asiakkaiden välillä. Siirto voi olla joko asiakkaiden välinen
+(Peer to Peer) tai välitetty (Mediated). Välitetyn tiedonsiirron etuna onkin se, että sekä lähettäjä että vastaanottaja voivat välttää
+palomuurit luomalla yhteyden toistensa sijaan välityspalvelimeen. 
 
-IRC (Internet Relay Chat) on vuonna 1988 Suomessa kehitetty tekstipohjainen pikaviestinprotokolla. Protokolla on avoin, 
-ja siitä on useita versioita sekä toteutuksia. Rakenteeltaan IRC on hajautettu. Palvelimet voidaan
-yhdistää kokonaisuuksiksi eli keskusteluverkoiksi, joilla on nimi (mm. ircnet). Keskusteluverkossa
-voi olla useita keskustelukanavia, joille voi liittyä ~\cite{ircrfc}. 
+IBB-menetelmässä
+tieto siirretään pienissä paketeissa Base64-menetelmällä enkoodattuna olemassaolevan xml-virran yli vastaanottajalle. Tämän
+menetelmän haittana onkin huono hyötysuhde sekä mahdollisesti välissä olevat palvelimet, jotka saattavat rajoittaa yhteyden nopeutta.
+Kuvassa ~\ref{fig:siirtomenetelmat_cmp} kuvataan IBB-menetelmän ja SOCKS5-menetelmän siirretyn tiedon määrää käytettäessä yhden 
+megatavun hyötykuormaa. IBB-menetelmä sopii kuitenkin hyvin tapauksiin, joissa muut menetelmät eivät toimi esimerkiksi palomuurien 
+tai muiden esteiden takia.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{siirtomenetelmat_cmp.png}
+	\caption{Siirretyn tiedon kokonaismäärä tiedostonsiirrossa} 
+	\label{fig:siirtomenetelmat_cmp}
+\end{figure}
+
+Siinä missä OOB ja IBB-menetelmät ovat yleisiä tiedon siirtoon suunniteltuja menetelmiä, tarjoaa uudempi 
+SI File Transfer-laajennus~\cite{xep0096} nimenomaan käyttäjien tiedostojen siirtoon tarkoitetun menetelmän. SI File Transfer hyödyntää
+pääasiallisesti SOCKS5 Bytestreams-laajennusta, mutta voi myös tarvittaessa käyttää IBB-siirtoja. Laajennus ei tuokaan lisää
+tapoja siirtää tietoja, vaan määrittää vain siirron aloituksen, lopetuksen sekä toiminnan eri virhetilanteissa.
+
+Uusin laajennus tiedostonsiirtoon XMPP-protokollassa on Jingle File Transfer~\cite{xep0234}. Jingle File Transfer tarjoaa 
+SI File Transfer-laajennuksesta parennetun tuen kaksisuuntaiselle viestinnälle tiedostonsiirron aikana sekä 
+paremman toteutuksen palomuurien ja NAT-ratkaisujen kiertämiseen. Jingle File Transfer on vielä suhteellisen tuore laajennus, mutta
+sen odotetaan tulevaisuudessa käytännössä korvaavan SI File Transfer-laajennuksen.
 
 \newpage
 \section{XMPP-protokollan edut ja heikkoudet}
@@ -350,7 +379,7 @@ jatkuvasti. Päivitysten syynä on usein ominaisuuksien lisäämisen lisäksi protoko
 XML-pohjaisten protokollien heikkoutena on pakettien suuri koko ja suhteellisen pieni hyötysuhde. Viestipakettien koko voi
 pahimmillaan olla moninkertainen itse paketissa lähetettävään tietoon. Kuvassa ~\ref{fig:viestipaketticmpkuva} kuvataan
 standardin viestipaketin kokoa, kun viestin koko on kolme merkkiä ja paketissa on protokollan kannalta vain kaikkein olennaisin
-tieto.
+tieto. 
 
 \begin{figure}[htp]
 	\centering
@@ -361,19 +390,41 @@ tieto.
 
 \subsection{Suojaus}
 
+Tiedon salaus on nykyään tärkeässä osassa erilaisessa viestinnässä. XMPP-protokolla
+sisältääkin jo määritelmässään tuen yhteyden salaukseen TLS-protokollan yli. Taulukossa
+~\ref{protocol_tls_support} luetellaan muutamien protokollien tilanne yhteyden salaukselle.
 
+\begin{center}
+    \begin{table}
+        \begin{tabular}{ | p{5cm} | p{10cm} |}
+        \hline
+        Protokolla & Tuki salaukselle \\ \hline
+        IRC & Kyllä, tuki riippuu palvelimesta \\ \hline
+        MSNP & Ei \\ \hline
+        OSCAR & Kyllä, TLS \\ \hline
+        Skype & Kyllä, patentoitu \\ \hline
+        XMPP & Kyllä, TLS \\
+        \hline
+        \end{tabular}
+        \caption{Eräiden protokollien tuki yhteyden salaukselle.}
+        \label{protocol_tls_support}
+    \end{table}
+\end{center}
+
+\newpage
 \section{Yhteenveto}
 
-XMPP on nykyään jo erittäin tuettu standardi, ja soveltuu hyvin erilaisiin pikaviestinnän
-käyttötarkoituksiin. Vaikka protokollaa ei nykyään vielä tuetakaan monissa suurimmista
-pikaviestinohjelmista, se leviää koko ajan pienempien palveluiden kautta. Protokollan 
-suurin hyöty onkin sen ilmainen soveltaminen eri tarkoituksiin sekä hyvän määritelmän
-kautta saavutettu yhteensopivuus valmiiden sovellusten kanssa. Myös muihin pikaviestintäverkkoihin
-viestiminen on mahdollistettu siltapalvelinten avulla, joten verkon asteittainen päivittäminen
-on suhteellisen yksinkertaista. Laajennettavan rakenteensa avulla XMPP-protokolla on valmistautunut
-sopeutumaan myös tulevaisuuden pikaviestinnän luomiin vaatimuksiin.
+XMPP on nykyään jo erittäin kypsä standardi, ja soveltuukin hyvin eri pikaviestinnän osa-alueille.
+Vaikka protokollaa ei nykyään vielä käytetäkään suurimmissa pikaviestinohjelmista, leviää se silti 
+pienempien palveluiden kautta ja monien suurempien toimijoiden tuella eteenpäin. Protokollan suurin
+hyöty onkin sen avoin dokumentaatio, hyvin suunniteltu määritelmä, yhteensopivuus olemassaolevien
+järjestelmien kanssa välipalvelinjärjestelmää soveltamalla, sekä monet eri lisenssein saatavilla olevat
+toteutukset protokollasta.
 
-(Hieman lyhyt vielä ...)
+XMPP onkin hyvän rakenteensa ja avoimuutensa ansiosta saanut jo suuren joukon laajennuksia. Protokollan
+ydinmääritelmästä taas on lähiaikoina tulossa uusi versio, johon on sisällytetty monia tärkeimmistä 
+laajennuksista. XMPP onkin jatkuvan kehityksen ja parantuvan ohjelmatuen ansiosta valmis sopeutumaan myös 
+tulevaisuuden pikaviestinnän luomiin vaatimuksiin ja haasteisiin.
 
 \newpage
 \begin{thebibliography}{99}
@@ -454,6 +505,37 @@ Facebook Developers,
 \textit{"Facebook Chat API"}
 Saatavilla osoitteesta <URL: \texttt{http://developers.facebook.com/docs/chat}>,
 viitattu 16.11.2011.
+
+\bibitem{xep0047}
+Justin Karneges, Peter Saint-Andre,
+\textit{"XEP-0047: In-Band Bytestreams"}
+Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0047.html}>,
+1.3.2011, XEP-0047.
+
+\bibitem{xep0066}
+Peter Saint-Andre,
+\textit{"XEP-0066: Out of Band Data"}
+Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0066.html}>,
+16.8.2006, XEP-0066.
+
+\bibitem{xep0096}
+Thomas Muldowney, Matthew Miller, Ryan Eatmon, Peter Saint-Andre,
+\textit{"XEP-0096: SI File Transfer"}
+Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0096.html}>,
+13.4.2004, XEP-0096.
+
+\bibitem{xep0234}
+Peter Saint-Andre,
+\textit{"XEP-0234: Jingle File Transfer"}
+Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0234.html}>,
+29.6.2011, XEP-0234.
+
+\bibitem{xep0065}
+Dave Smith, Matthew Miller, Peter Saint-Andre, Justin Karneges,
+\textit{"XEP-0065: SOCKS5 Bytestreams"}
+Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0065.html}>,
+20.4.2011, XEP-0065.
+
 
 
 

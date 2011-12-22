@@ -1,0 +1,13 @@
+SOCKS5 Ext:
+252 (init)
+1048576 (package)
+1048828 (total)
+
+IN-BAND:
+
+22 packets of 65535 bytes each
+223 (init)
+22x189 = 4158
+1024*1024*1.33 (33% overhead from base64)
+~1398988 (total)
+

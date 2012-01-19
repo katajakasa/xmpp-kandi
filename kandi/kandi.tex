@@ -21,7 +21,7 @@ esimerkiksi tiedostonsiirtoihin ja VoIP-puheluihin. T‰ss‰ tutkielmassa tutustuta
 teknisiin ominaisuuksiin ja tehd‰‰n vertailuja muihin pikaviestinprotokolliin.}
 \keywords{XMPP, Protocol, instant messaging}
 \avainsanat{XMPP, protokolla, pikaviestint‰}
-\setdate{19}{12}{2011}
+\setdate{18}{01}{2012}
 \tyyppi{kandidaatintutkielma}
 
 \begin{document}
@@ -30,35 +30,35 @@ teknisiin ominaisuuksiin ja tehd‰‰n vertailuja muihin pikaviestinprotokolliin.}
 
 \section{Johdanto}
 
-Pikaviestinn‰st‰ on tullut osa useiden tietokoneen, ja v‰hitellen myˆs erilaisten mobiililaitteiden 
-k‰ytt‰jien arkea. Pikaviestint‰‰ k‰ytet‰‰n niin kotona, koulussa ja tˆiss‰. Erilaisia pikaviestin-ohjelmia 
-on useita, ja viestint‰‰ voidaan harrastaa joko perinteisesti tekstiviestein, tai monipuolisemmin ‰‰nen ja 
-videon avulla. WWW-ohjelmointitekniikoiden edistyess‰ pikaviestimi‰ lˆytyy jopa erilaisilta www-sivuilta, josta
-hyv‰n‰ esimerkkin‰ toimii mm. Facebook-palvelu.
+Pikaviestinn‰st‰ on tullut osa useiden tietokoneen, ja nyky‰‰n myˆs erilaisten mobiililaitteiden 
+k‰ytt‰jien arkea. Pikaviestint‰‰ k‰ytet‰‰n niin kotona, kuin myˆs koulussa~\cite{im_at_school} ja tˆiss‰~\cite{im_at_work}. 
+Erilaisia pikaviestinsovelluksia on useita, ja viestint‰‰ voidaan harrastaa joko perinteisesti tekstiviestein, tai 
+monipuolisemmin ‰‰nen ja videon avulla. WWW-ohjelmointitekniikoiden edistyess‰ pikaviestimi‰ lˆytyy jopa erilaisilta 
+www-sivuilta, josta hyv‰n‰ esimerkkin‰ toimii mm. Facebook-palvelu~\cite{fbchatapi}.
 
 Erilaisten pikaviestinsovellusten tullessa markkinoille, syntyy myˆs uusia viestint‰protokollia ja m‰‰ritelmi‰
-n‰iden sovellusten k‰yttˆˆn. T‰st‰ johtuukin nykymallin mukaisen pikaviestinn‰n suurin ongelma; eri pikaviestinverkkoihin
-tarvitaan usein eri ohjelmat. Samalla k‰ytt‰j‰ll‰ saattaakin olla k‰ytˆss‰ useita ohjelmia, jotka toimivat omissa
+n‰iden sovellusten k‰yttˆˆn. T‰st‰ johtuukin nykymallin mukaisen pikaviestinn‰n suurin ongelma; eri pikaviestinverkkojen k‰yttˆˆn
+tarvitaan usein eri sovellukset. Samalla k‰ytt‰j‰ll‰ saattaakin olla k‰ytˆss‰ useita ohjelmia, jotka toimivat omissa
 viestint‰verkoissaan. Yrityksi‰ yhdist‰‰ eri pikaviestinverkkoja saman ohjelman k‰yttˆˆn on olemassa, mutta
 kaikki n‰ist‰ ovat eri syist‰ ep‰t‰ydellisi‰.
 
 Usein ongelmana pikaviestint‰protokollien toteuttamisessa on se, ett‰ pikaviestinverkon protokolla on jollain 
 tavalla suljettu. Protokolla voi olla suljettu esimerkiksi lisenssiehdoiltaan, joilla sen k‰yttˆ‰ rajoitetaan muiden 
 kuin sille suunnitellun ohjelman k‰yttˆˆn. Protokollan m‰‰ritelm‰ voi olla suljettu ja itse protokolla voi olla salattu jollain
-salausalgoritmilla. Esimerkiksi MSN Messenger-ohjelman k‰ytt‰m‰n MSNP-protokollan m‰‰ritelm‰ ei ole julkinen. 
+salausalgoritmilla. Esimerkiksi MSN Messenger-ohjelman k‰ytt‰m‰n MSNP-protokollan m‰‰ritelm‰ ei ole virallisesti julkinen. 
 Skype-pikaviestinohjelman k‰ytt‰m‰ protokolla taas on t‰ysin salattu~\cite{skype1} Rijndael-algoritmilla. T‰llaisten ohjelmien 
 k‰ytt‰mi‰ protokollia ei voida toteuttaa muihin pikaviestimiin ilman protokollan purkua, joka esimerkiksi Skypen tapauksessa
-on toistaiseksi ollut vain osittain menestyksek‰st‰.
+on toistaiseksi ollut vain osittain menestyksek‰st‰~\cite{skype_reversed}.
 
 Extensible Messaging and Presence Protocol (XMPP) pyrkii olemaan mahdollisimman avoin ja laajennettavissa oleva,
-yleisk‰yttˆinen protokolla kaikkeen pikaviestint‰‰n. Se hallitsee laajennuksia k‰ytt‰en mm. tekstiviestit, 
+yleisk‰yttˆinen protokolla kaikkeen pikaviestint‰‰n~\cite{about_xmpp}. Se hallitsee laajennuksia k‰ytt‰en mm. tekstiviestit, 
 VoIP-puhelut sek‰ tiedostojen siirron k‰ytt‰jien v‰lill‰. XMPP-verkko sallii myˆs esimerkiksi siltaukset
 muihin pikaviestinverkkoihin, kuten Internet Relay Chat (IRC). XMPP-protokollaa k‰ytt‰‰kin nyky‰‰n jo moni
 tunnettu yritys sovelluksissaan, kuten mm. Nokia (Nokia Ovi), Google (Google Talk, Google Wave), 
 LiveJournal (LJ Talk). Myˆs muunmuassa Facebook paljastaa XMPP-pohjaisen rajapinnan palvelun ulkopuolisille
-k‰ytt‰jille.
+k‰ytt‰jille~\cite{fbchatapi}.
 
-Kandidaatintutkielma tarkastelee lyhyesti pikaviestint‰‰, ja keskittyy erityisesti XMPP-pikaviestinprotokollaan.
+Kandidaatintutkielma tarkastelee lyhyesti pikaviestint‰‰ yleisesti, ja keskittyy erityisesti XMPP-protokollaan.
 Luvussa 2 k‰sitell‰‰n pikaviestint‰‰ yleisesti, ja esitell‰‰n muutamia sen sovelluksia sek‰ protokollia.
 Luvussa 3 esitell‰‰n XMPP-protokollaa ja sen rakennetta. Luvussa 4 perehdyt‰‰n XMPP-verkkoihin ja niiden 
 eroihin muihin pikaviestinverkkoihin n‰hden. Luvussa 5 esitell‰‰n XMPP-protokollan pikaviestint‰‰n tarjoamia
@@ -71,8 +71,15 @@ ominaisuuksia, kuten tekstiviestej‰ ja olotilan hallintaa.
 Pikaviestinn‰ss‰ on Wikipedian m‰‰ritelm‰n~\cite{wiki1} mukaan kyse (l‰hes) reaaliaikaisesta, tekstipohjaisesta 
 viestinn‰st‰ kahden tai useamman ihmisen v‰lill‰ tietokoneiden tai muiden laitteiden v‰lityksell‰. Tiedon siirto tapahtuu
 Internetin tai muun verkon yli. Pikaviestint‰ voi monipuolisimmillaan olla myˆs videon tai ‰‰nen v‰lityksell‰ tapahtuvaa 
-viestint‰‰.
+viestint‰‰. Pikaviestint‰‰n on kehitelty useita standardeja ja protokollia, kuten XMPP.
 
+\emph{Protokolla} m‰‰rittelee toimenpiteet ja rakenteet, joita k‰ytet‰‰n tiedon siirt‰miseen, tallentamiseen ja 
+lataamiseen. \emph{Tietoliikenneprotokollassa} p‰‰asiana ovat tavat joilla viestinn‰n eri tahot siirt‰v‰t tietoa 
+toisilleen, toimivat virhetilanteissa, autentikoituvat ja salaavat siirrett‰v‰n tiedon. \emph{Autentikoinnilla} tarkoitetaan
+k‰ytt‰j‰n todentamista h‰nen yritt‰ess‰ p‰‰st‰ suojattuihin resursseihin. Tiedon \emph{salauksessa} taas on kyse
+tiedon muuttamisesta jollain algorimilla sellaiseen muotoon, ett‰ vain tarkoitettu vastaanottaja pystyy sen lukemaan
+selkokielisen‰. Tiedon salaukseen on useita standardeja, joista esimerkkin‰ suosittu TLS ~\cite{rfc5246}.
+ 
 \subsection{Sovellutukset}
 
 Pikaviestint‰‰ k‰ytet‰‰n nyky‰‰n moneen eri tarkoitukseen. Tunnetuinta pikaviestint‰ on luultavasti nuorison keskuudessa,
@@ -82,13 +89,15 @@ ohjelmia k‰ytet‰‰n.
 
 Tyˆpaikoilla pikaviestint‰‰ k‰ytet‰‰n useing projektien koordinointiin eri tyˆryhmien v‰lill‰ sek‰ viestint‰‰n asiakkaiden
 kanssa. Pikaviestinn‰n t‰rkeimpi‰ osa-alueita n‰iss‰ k‰yttˆtarkoituksissa ovatkin esimerkiksi puhe- sek‰ videopohjainen
-pikaviestint‰, sek‰ ryhm‰ss‰ ett‰ kahdenkeskisesti.
+pikaviestint‰, sek‰ ryhm‰ss‰ ett‰ kahdenkeskisesti. Koulumaailmassa pikaviestint‰‰ k‰ytet‰‰n useimmiten opettajien ja oppilaiden 
+sek‰ vanhempien v‰liseen viestint‰‰n. Myˆs kursseja tai tunteja saatetaan j‰rjest‰‰ et‰n‰ k‰ytt‰en apuna ‰‰ni- video- ja tekstipohjaista 
+pikaviestint‰‰.
 
 \subsection{Muita protokollia}
 
-T‰ss‰ tutkielmassa tarkasteltavan XMPP-protokollan lis‰ksi on olemassa myˆs muita pikaviestinprotokollia, kuten muunmuassa MSNP, Skype, IRC, SIMPLE 
-ja useita muita. N‰ist‰ SIMPLE suunniteltiin myˆs mahdollisimman yleisk‰yttˆiseksi ja avoimeksi, ja on k‰ytˆss‰ 
-esimerkiksi joissain VoIP-sovelluksissa. 
+T‰ss‰ tutkielmassa tarkasteltavan XMPP-protokollan lis‰ksi on olemassa myˆs muita pikaviestinprotokollia, kuten muunmuassa 
+\emph{MSNP}, \emph{Skype}, \emph{IRC}, \emph{SIMPLE} ja useita muita v‰hemm‰n k‰ytettyj‰. N‰ist‰ SIMPLE suunniteltiin myˆs 
+mahdollisimman yleisk‰yttˆiseksi ja avoimeksi, ja on k‰ytˆss‰ esimerkiksi joissain VoIP-sovelluksissa. 
 
 Skype-protokolla on t‰ysin suljettu ja salattu ~\cite{skype1}. Protokollasta on onnistuttu selvitt‰m‰‰n osia, mutta ainakin
 toistaiseksi sen toiminta on suurilta osin tuntematon. Skype-verkko on rakenteeltaan hajautettu, mutta
@@ -96,27 +105,29 @@ verkkoon kirjautuminen pit‰‰ tehd‰ erillisen Skype Limited-yhtiˆn kirjautumispal
 
 MSNP (Microsoft Notification Protocol) on Microsoft-yhtiˆn protokolla pikaviestint‰‰n. Sit‰ k‰ytet‰‰n muunmuassa yhtiˆn 
 omissa Windows Messenger, MSN Messenger ja Windows Live Messenger-sovelluksissa. Myˆs esimerkiksi avoimeen l‰hdekoodiin 
-perustuvat pikaviestinsovellukset Pidgin ja Trillian taitavat viestinn‰n MSNP-protokollan yli. MSNP-verkko on rakenteeltaan 
+perustuvat pikaviestinsovellukset Pidgin ja Trillian taitavat viestinn‰n MSNP-protokollaa k‰ytt‰en. MSNP-verkko on rakenteeltaan 
 keskitetty ~\cite{msnp}, ja kirjautumispalvelimet ovat Microsoftin hallinnassa. Microsoft ei julkaise protokollan m‰‰ritelm‰‰, vaan
 jokainen protokollan versio on k‰ytt‰jien toimesta purettu ja m‰‰ritelm‰t julkaistu ep‰virallisesti. T‰ll‰ hetkell‰ MSNP:n 
 viimeisin julkaistu versio on 19, vaikka kirjautumispalvelimet tukevatkin kaikkia protokollia versiosta 8 l‰htien.
 
 IRC (Internet Relay Chat) on vuonna 1988 Suomessa kehitetty tekstipohjainen pikaviestinprotokolla. Protokolla on avoin, 
 ja siit‰ on useita versioita sek‰ toteutuksia. Rakenteeltaan IRC on hajautettu. Palvelimet voidaan
-yhdist‰‰ kokonaisuuksiksi eli keskusteluverkoiksi, joilla on nimi. Keskusteluverkossa voi olla useita keskustelukanavia, 
-joille k‰ytt‰j‰ voi liitty‰ ~\cite{ircrfc}.
+yhdist‰‰ kokonaisuuksiksi eli keskusteluverkoiksi. Er‰it‰ suosittuja keskusteluverkkoja on muunmuassa
+IRCNet ja Quakenet. Keskusteluverkossa voi olla useita keskustelukanavia, joille k‰ytt‰j‰ voi liitty‰ ~\cite{ircrfc}.
+K‰ytt‰jill‰ voi olla keskustelukanavilla erilaisia oikeuksia, joista esimerkkin‰ toisten k‰ytt‰jien poistaminen kanavalta
+sek‰ kanavan aiheen vaihtaminen.
 
 \newpage
 \section{XMPP-Protokolla}
 
-Extensible Messaging and Presence Protocol (XMPP) on avoin, reaaliaikaiseen pikaviestint‰‰n ja olotilan ilmoittamiseen 
+Extensible Messaging and Presence Protocol (XMPP) on avoin, reaaliaikaiseen pikaviestint‰‰n ja olotilan julistamiseen 
 tarkoitettu XML-pohjainen standardi. Protokollaa kehittiin alun perin nimell‰ Jabber, ja se oli tarkoitettu saman 
 nimiseen, vapaaseen l‰hdekoodiin perustuvaan pikaviestinohjelmaan. Vuonna 2002 perustettiin XMPP tyˆryhm‰ (XMPP WG), 
-jonka teht‰v‰ksi tuli Jabber-protokollaan perustuvan pikaviestinprotokollan kehitys. Uuden, XMPP-nimisen protokollan 
-tarkoitus oli soveltua Internet Engineering Task Forcen (IETF) tukemaksi pikaviestint‰- ja olotilan hallinta-protokollaksi. 
-Kehitystyˆn tuloksena oli lopulta dokumentti, jossa m‰‰riteltiin protokollan perusominaisuudet ja laajennukset pikaviestint‰‰n.
-Nyky‰‰n t‰t‰ perustoiminnallisuutta m‰‰ritell‰‰n RFC-dokumenteissa 3920 ja 3921. Myˆhemmin protokollaan on luotu laajennuksia 
-esimerkiksi tiedostojen siirt‰miseen sek‰ VoIP-puheluihin. 
+jonka teht‰v‰ksi tuli Jabber-protokollaan perustuvan pikaviestinprotokollan kehitys. Uuden XMPP-nimisen protokollan 
+tarkoitus oli soveltua Internet Engineering Task Forcen (IETF) tukemaksi protokollaksi pikaviestint‰‰n (Instant Messaging) ja 
+tilan (Presence status) hallintaan. Kehitystyˆn tuloksena oli lopulta dokumentti, jossa m‰‰riteltiin protokollan perusominaisuudet 
+ja laajennukset pikaviestint‰‰n. Nyky‰‰n t‰t‰ perustoiminnallisuutta m‰‰ritell‰‰n RFC-do\-ku\-men\-teis\-sa 3920 ja 3921. 
+Myˆhemmin protokollaan on luotu laajennuksia esimerkiksi tiedostojen siirt‰miseen sek‰ VoIP-puheluihin. 
 
 \subsection{Versiot ja ydinstandardi}
 
@@ -124,8 +135,8 @@ XMPP-protokollan kehityksen voidaan katsoa alkaneen vuonna 2000, jolloin julkais
 avoimeksi pikaviestint‰protokollaksi. T‰m‰n j‰lkeen julkistettiin seuraavina vuosina useita suunnitelmadokumentteja 
 muunmuassa salauksen soveltamisesta pikaviestint‰‰n, merkkijonojen kuljettamisesta XML-virroissa sek‰ olotilan julkistamisesta.
 
-Protokollan ensimm‰inen virallinen m‰‰ritelm‰ julkaistiin vuonna 2004 RFC-dokumenteissa 3920-3923. Seuraavien vuosien
-aikana kehiteltiin useita laajennuksia mm. puheen ja videokuvan kuljettamiseen XMPP-verkossa, kunnes vuonna 2011 julkaistiin
+Protokollan ensimm‰inen virallinen m‰‰ritelm‰ julkaistiin vuonna 2004 RFC-do\-ku\-men\-teis\-sa 3920-3923 ~\cite{rfc3920}~\cite{rfc3921}~\cite{rfc3922}. 
+Seuraavien vuosien aikana kehiteltiin useita laajennuksia mm. puheen ja videokuvan kuljettamiseen XMPP-verkossa, kunnes vuonna 2011 julkaistiin
 protokollan seuraava versio RFC-dokumenteissa 6120-6122. Uusimmat m‰‰ritelm‰dokumentit ovat k‰yt‰nnˆss‰ viel‰
 tarkastelun alla. T‰ss‰ dokumentissa k‰sitell‰‰nkin protokollaa viel‰ vanhemman, k‰ytetymm‰n ja tuetumman version pohjalta.
 
@@ -147,47 +158,50 @@ Muutamia huomionarvoisia XMPP-protokollan laajennuksia:
         mm. tiedostoja.
   \item XEP-0096: SI File Transfer. Tiedostonsiirto-ominaisuudet protokollaan lis‰‰v‰ laajennus. Rakentuu
         pitk‰lti edellisen laajennuksen lis‰ysten p‰‰lle.
-  \item XEP-0166: Jingle. Laajennus videon, ‰‰nen ja muun datan siirtoa varten. \ldots
+  \item XEP-0166: Jingle. Laajennus videon, ‰‰nen ja muun datan siirtoa varten.
 \end{itemize}
 
 \subsection{XML-tietovirrat}
 
 XMPP-standardissa liikenne kuljetetaan yleens‰ XML-tietovirrassa.
 XML-tietovirtaa voidaan ajatella s‰iliˆn‰, jota k‰ytet‰‰n XML-elementtien kuljettamiseen verkkoentiteettien v‰lill‰. 
-Virran alku ilmoitetaan aina XML-elementill‰ stream, jossa voidaan m‰‰ritell‰ attribuutteina myˆs esimerkiksi k‰ytett‰v‰ 
+Virran alku ilmoitetaan aina XML-elementill‰ \emph{stream}, jossa voidaan m‰‰ritell‰ attribuutteina myˆs esimerkiksi k‰ytett‰v‰ 
 nimiavaruus ja nerkistˆ. Niin kauan kuin XML-virta on olemassa, sen luonut entiteetti voi l‰hett‰‰ m‰‰ritt‰m‰ttˆm‰n 
 m‰‰r‰n XML-elementtej‰ vastaanottajalle. XML-tietovirta on aina yksisuuntainen; mik‰li vastaanottava p‰‰ haluaa
-l‰hett‰‰ viestej‰, pit‰‰ sen t‰t‰ varten erikseen neuvotella  erillinen virta (Response Stream).
+l‰hett‰‰ viestej‰, pit‰‰ sen t‰t‰ varten erikseen neuvotella erillinen virta (Response Stream).
 
 XML-tietovirrassa voidaan l‰hett‰‰ XMPP-standardin mukaan l‰hett‰‰ joko XML-s‰keistˆj‰ tai yhteyden neuvottelemiseen
 tarvittavia XML-elementtej‰. Mik‰li entiteetti saa v‰‰r‰nmuotoisen paketin, se hyl‰t‰‰n. Yhteyden ja 
 virran neuvottelee yleens‰ asiakas- tai palvelinentiteetti vastaanottavaan entiteettiin, joka on yleens‰ palvelin. 
-Asiakas-palvelin yhteyksien lis‰ksi siis palvelin-palvelin yhteydet ovat myˆs mahdollisia.
+Asiakas-palvelin yhteyksien lis‰ksi palvelin-palvelin yhteydet ovat myˆs mahdollisia.
 
 \subsection{S‰keistˆt}
 
-XMPP-protokollassa s‰keistˆ (Stanza) on itsen‰inen tietopaketti, joka voidaan l‰hett‰‰ entiteetilt‰ toiselle XML-virran yli. 
-S‰keistˆ kuljetetaan aina suoraan XML-virran stream-juurielementin alla, ja voi olla nimelt‰‰n "message", "presence" tai "iq".
-S‰keistˆjen nimiavaruuden on oltava "jabber:client" tai "jabber:server". Mik‰‰n muu tietovirrassa l‰hetetty paketti
+XMPP-protokollassa s‰keistˆ (Stanza) on xml-elementti sis‰ltˆineen, joka voidaan l‰hett‰‰ entiteetilt‰ toiselle XML-virran yli. 
+S‰keistˆ kuljetetaan aina suoraan XML-virran \emph{stream}-juurielementin alla, ja voi olla nimelt‰‰n \emph{message}, \emph{presence} tai \emph{iq}.
+S‰keistˆjen nimiavaruuden on oltava \emph{jabber:client} tai \emph{jabber:server}. Mik‰‰n muu tietovirrassa l‰hetetty elementti
 ei ole s‰keistˆ. S‰keistˆ sis‰lt‰‰ yleens‰ yhden tai useampia lapsielementtej‰.
 
-S‰keistˆll‰ on kolme tyyppi‰, joilla m‰‰ritet‰‰n viestint‰mekanismi. Push-mekanismi on tarkoitettu yleiseen viestint‰‰n,
-publish-subscribe yleiseen palvelimen ja verkon tilan viestitt‰miseen asiakkaille, ja request-response taas tiedon 
-vaihtamiseen entiteettien kesken. Iq-tyyppinen paketti on tyypilt‰‰n request-response, kun taas presence ja message-elementit
-ovat push-tyyppisi‰.
+S‰keistˆll‰ on kolme tyyppi‰, joilla m‰‰ritet‰‰n viestint‰mekanismi. \emph{Push}-mekanismi on tarkoitettu yleiseen viestint‰‰n,
+\emph{publish-subscribe}~\cite{xep0060} yleiseen palvelimen ja verkon tilan viestitt‰miseen asiakkaille, ja \emph{request-response} taas tiedon 
+vaihtamiseen entiteettien kesken. \emph{Push}-mekanismissa kyse on siit‰, ett‰ entiteetti tyˆnt‰‰ toiselle entiteetille tietoa,
+eik‰ v‰ltt‰m‰tt‰ odota vastausta. T‰st‰ esimerkkin‰ on esimerkiksi \emph{message}-elementti. \emph{Publish-subscribe} -mekanismissa 
+tilaava entiteetti ilmoittaa julkaisevalle entiteetille haluavansa tietoja tietyntyyppisist‰ asioista eli tekee tilauksen, ja julkaiseva entiteetti 
+l‰hett‰‰ t‰llaisten asioiden ilmestymisest‰ tiedon tilaajalle. \emph{Request-response} -tyyppisess‰ viestinn‰ss‰ entiteetti pyyt‰‰ tietoa
+toiselta entiteetilt‰. Esimerkiksi Iq-paketti on tyypilt‰‰n t‰llainen.
 
 \newpage
 \section{Verkko}
 
 XMPP-verkko on hajautettu, ja palvelimia voi olla useita. Palvelimet voivat olla yhteydess‰ toisiinsa
 suoraan, tai v‰lipalvelimien v‰lityksell‰. Asiakkaat voivat halutessaan ottaa yhteyden mihin tahansa verkon
-palvelimista.
+palvelimista. Kuvaajassa ~\ref{fig:verkkokuva} kuvataan verkon rakennetta.
 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{verkkokuva.png}
 	\caption{XMPP-verkon rakenne} 
-	\label{verkkokuva}
+	\label{fig:verkkokuva}
 \end{figure}
 
 \subsection{Palvelin}
@@ -211,13 +225,13 @@ Asiakkaan teht‰v‰n‰ on l‰hett‰‰ viestej‰ ja tilatietoja palvelimelle, sek‰ vasta
 Asiakkaan on osattava v‰hint‰‰n avata yhteys XML-viestien l‰hett‰mist‰ ja vastaanottamista varten.
 
 XMPP-verkossa jokaista asiakasta tai p‰‰tepistett‰ kutsutaan entiteetiksi, jolla on aina oma tunnisteensa 
-nimelt‰‰n JID. Tunniste on kolmiosainen, esimerkiksi muotoa "solmu@toimialue/resurssi". Tunnisteessa 
+nimelt‰‰n JID. Tunniste on kolmiosainen, esimerkiksi muotoa \emph{solmu@toimialue/resurssi}. Tunnisteessa 
 toimialue-kentt‰ m‰‰rittelee k‰ytetyn palvelimen osoitteen, solmu-kentt‰ k‰ytt‰j‰n nimen ja resurssi-kentt‰
 k‰ytt‰j‰lle kuuluvan toisen asiakaslaitteen. Protokolla salliikin useampien asiakasohjelmien kirjautumisen 
 samalle palvelimelle samalla k‰ytt‰j‰tunnuksella, kunhan eri ohjelmille m‰‰ritell‰‰n oma kotiosoitteensa. 
 
-Entiteeteille voidaan m‰‰ritt‰‰ myˆs t‰rkeystasoja, jolloin esimerkiksi osoitteeseen "solmu@toimialue/matkapuhelin" 
-l‰hetetty viesti menee k‰ytt‰j‰n matkapuhelimeen, mutta osoitteeseen "solmu@toimialue" l‰hetetty viesti ohjautuu 
+Entiteeteille voidaan m‰‰ritt‰‰ myˆs t‰rkeystasoja, jolloin esimerkiksi osoitteeseen \emph{solmu@toimialue/matkapuhelin} 
+l‰hetetty viesti menee k‰ytt‰j‰n matkapuhelimeen, mutta osoitteeseen \emph{solmu@toimialue} l‰hetetty viesti ohjautuu 
 t‰rkeimm‰ksi m‰‰riteltyyn asiakasohjelmaan tai laitteeseen.
 
 \subsection{V‰lipalvelin}
@@ -238,7 +252,7 @@ XMPP-verkon kaikkien asiakkaiden ja palvelinten on tuettava TLS- ja SASL-metodej
 ei ole protokollan m‰‰ritelm‰dokumentissa vaadittua, mutta sit‰ suositellaan vahvasti. Myˆs palvelinten v‰listen
 tietoliikenneyhteyksien v‰linen salaus on suositeltua, muttei vaadittua.
 
-XMPP-verkossa m‰‰ritell‰‰n myˆs palvelinten v‰linen "server dialback" eli takaisinsoitto, jota voidaan k‰ytt‰‰
+XMPP-verkossa m‰‰ritell‰‰n myˆs palvelinten v‰linen takaisinsoitto (Server dialback), jota voidaan k‰ytt‰‰
 varmistamaan ett‰ palvelimeen yhdist‰v‰ toinen palvelin on olemassa. Protokollan m‰‰ritelm‰dokumenteissa
 takaisinsoitto m‰‰ritell‰‰nkin hyvin heikoksi suojaukseksi, ja sen k‰yttˆ‰ ei en‰‰ suositella. Palvelinten 
 ei odoteta en‰‰ tukevan kyseist‰ metodia.
@@ -247,61 +261,61 @@ ei odoteta en‰‰ tukevan kyseist‰ metodia.
 
 XMPP-protokollan mukainen yhteys asiakas- ja palvelinsovelluksen v‰lill‰ aloitetaan luomalla XML-virta. 
 Ensimm‰iseksi virrassa suoritetaan mahdollinen salauksen neuvottelu sopivin xml-s‰kein. Salauksen ep‰onnistuessa
-palvelinsovellus voi vastata erilaisilla virheilmoituksilla. (TODO: L‰hde)
+palvelinsovellus voi vastata erilaisilla virheilmoituksilla ~\cite{rfc3920}.
 
 Kun haluttu yhteyden salauksen neuvottelu on suoritettu, aloitetaan virallinen yhteys l‰hett‰m‰ll‰ 
-protokollam‰‰ritelm‰n mukainen stream-elementti. Palvelin vastaa elementtiin omalla "stream"-elementill‰‰n
-sek‰ "stream:features"-elementill‰, jossa m‰‰ritell‰‰n autentikointiin k‰ytett‰v‰t suojausmetodit.
+protokollam‰‰ritelm‰n mukainen stream-elementti. Palvelin vastaa elementtiin omalla \emph{stream}-elementill‰‰n
+sek‰ \emph{stream:features}-elementill‰, jossa m‰‰ritell‰‰n autentikointiin k‰ytett‰v‰t suojausmetodit.
 Tavallisesti k‰yt‰ss‰ on ainakin MD5-tiivistealgoritmi sek‰ puhdas teksti. Asiakasohjelma valitsee
-suojausmetodin, ja ilmoittaa siit‰ "auth"-elementiss‰ palvelimelle.
+suojausmetodin, ja ilmoittaa siit‰ \emph{auth}-elementiss‰ palvelimelle.
 
 Kun autentikaatiometodin valinta on suoritettu onnistuneesti, aloitetaan itse autentikaatio. Kaikki autentikaatiopaketit
-kuljetetaan asiakkaan ja palvelimen v‰lill‰ "response" ja "challenge"-paketeissa base64-enkoodattuna. Virhetilanteessa
-palvelin voi l‰hett‰‰ myˆs "failure"-elementin virhetietojen kera. L‰hetett‰v‰t elementit riippuvat valitusta 
+kuljetetaan asiakkaan ja palvelimen v‰lill‰ \emph{response} ja \emph{challenge}-elementeiss‰ base64-enkoodattuna. Virhetilanteessa
+palvelin voi l‰hett‰‰ myˆs \emph{failure}-elementin virhetietojen kera. L‰hetett‰v‰t elementit riippuvat valitusta 
 autentikaatiometodista. Kun asiakas on vastannut oikein kaikkiin palvelimen l‰hett‰miin haasteisiin, saa asiakas
-palvelimelta "success"-elementin. T‰m‰n j‰lkeen asiakas neuvottelee palvelimenkanssa uuden yhteyden "stream"-elementeill‰,
-ja palvelin l‰hett‰‰ asiakkaalle listan palvelimen osaamista toiminnoista "stream:features"-elementiss‰. N‰it‰ voi olla
+palvelimelta \emph{success}-elementin. T‰m‰n j‰lkeen asiakas neuvottelee palvelimenkanssa uuden yhteyden \emph{stream}-elementeill‰,
+ja palvelin l‰hett‰‰ asiakkaalle listan palvelimen osaamista toiminnoista \emph{stream:features}-elementiss‰. N‰it‰ voi olla
 mm. sessionhallinta, pikaviestint‰ ja resurssien sidonta.
 
 \subsection{Sessio ja resurssin sidonta}
 
 Kun yhteys on luotu ja autentikointi on suoritettu, suoritetaan k‰ytt‰j‰n resurssin sidonta palvelimelle. Sidonta on tarpeellista,
 mik‰li palvelin aiemmassa vaiheessa ilmoitti sen ominaisuutena asiakkaalle. Sidonnan tarkoituksena on yhdist‰‰ asiakkaan resurssi, 
-esim. "kotikone" tai "kannettava" palvelimella toimivaksi JID-tunnisteeksi. T‰t‰ varten asiakas l‰hett‰‰ heti autentikoinnin 
-onnistuttua palvelimelle iq-s‰keen, jossa l‰hetet‰‰n sen sis‰isess‰ "resource"-elementiss‰ haluttu resurssi. Asiakas voi antaa
+esim. \emph{kotikone} tai \emph{kannettava} palvelimella toimivaksi JID-tunnisteeksi. T‰t‰ varten asiakas l‰hett‰‰ heti autentikoinnin 
+onnistuttua palvelimelle iq-s‰keen, jossa l‰hetet‰‰n sen sis‰isess‰ \emph{resource}-elementiss‰ haluttu resurssi. Asiakas voi antaa
 myˆs palvelimen suorittaa resurssinimen valinnan automaattisesti j‰tt‰m‰ll‰ kent‰n ryhj‰ksi. Palvelimen ei myˆsk‰‰n ole pakko
 hyv‰ksy‰ haluttua resurssia, vaan voi vaihtaa sen toiseen. Resurssin sidonnan onnistuttua palvelin l‰hett‰‰ asiakkaalle iq-s‰keen,
-jonka sis‰isess‰ "jid"-elementiss‰ on asiakkaan t‰ysi JID-tunniste. T‰t‰ tunnistetta k‰ytet‰‰n asiakkaan tunnistamiseen palvelimella
+jonka sis‰isess‰ \emph{jid}-elementiss‰ on asiakkaan t‰ysi JID-tunniste. T‰t‰ tunnistetta k‰ytet‰‰n asiakkaan tunnistamiseen palvelimella
 loppuyhteyden aikana.
 
-Mik‰li palvelin mainostaa asiakkaalle "stream:features"-elementiss‰ sessio-ominaisuutta, ja mik‰li asiakasohjelma haluaa
+Mik‰li palvelin mainostaa asiakkaalle \emph{stream:features}-elementiss‰ sessio-ominaisuutta, ja mik‰li asiakasohjelma haluaa
 k‰ytt‰‰ palvelimen pikaviestint‰- ja tilanhallintaominaisuuksia, on asiakkaan neuvoteltava palvelimen kanssa sessio. T‰m‰ tehd‰‰n
 l‰hett‰m‰ll‰ palvelimelle sopiva iq-s‰e. Palvelin vastaa t‰h‰n joko onnistumista merkkaavalla tyhj‰ll‰ iq-s‰keell‰, 
-tai "error"-elementill‰ varustetulla virhett‰ merkkaavalla iq-s‰keell‰. Mik‰li session luonti ep‰onnistuu, voi se olla merkki
+tai \emph{error}-elementill‰ varustetulla virhett‰ merkkaavalla iq-s‰keell‰. Mik‰li session luonti ep‰onnistuu, voi se olla merkki
 siit‰, ett‰ asiakkaalla ei ole oikeuksia pikaviestint‰‰n palvelimella. Kun session luonti on suoritettu, sanotaan
 resurssin XMPP-terminologiassa olevan aktiivinen.
 
 \subsection{Tekstiviestien v‰litys}
 
 Viestien l‰hetyst‰ varten asiakkaalla on oltava t‰ysi JID. Viestipakettina k‰ytet‰‰n message-s‰ett‰, jolla on oltava
-aina v‰hint‰‰n "to"-parametri viestin vastaanottajan JID:t‰ varten. Vastaanottajan JID voi sis‰lt‰‰ resurssin, mik‰li viesti
+aina v‰hint‰‰n \emph{to}-parametri viestin vastaanottajan JID:t‰ varten. Vastaanottajan JID voi sis‰lt‰‰ resurssin, mik‰li viesti
 on suunnattu vastaanottajan tietylle resurssille. Mik‰li resurssia ei m‰‰ritet‰, suuntautuu viesti vastaanottajan
-kaikkiin resursseihin. Elementiss‰ voidaan m‰‰ritell‰ myˆs "from"-parametri, johon sijoitetaan viestin l‰hett‰j‰n JID.
+kaikkiin resursseihin. Elementiss‰ voidaan m‰‰ritell‰ myˆs \emph{from}-parametri, johon sijoitetaan viestin l‰hett‰j‰n JID.
 Mik‰li l‰hett‰j‰n JID sis‰lt‰‰ resurssinimen, suunnataan takaisin tulevat viestit t‰h‰n resurssiin.
 
-Message-s‰e sis‰lt‰‰ aina "body"-elementin, jossa on kuljetettava viesti. Viestin pituudelle ei teoriassa ole m‰‰ritetty rajaa,
-mutta asiakasohjelmat saattavat itse lyhent‰‰ viesti‰. S‰e voi sis‰lt‰‰ myˆs "thread"-elementin, jolla ilmoitetaan keskustelu,
-johon viesti liittyy. Mik‰li viestiin tai keskusteluun halutaan m‰‰ritt‰‰ aihe, se voidaan l‰hett‰‰ "subject"-elementiss‰. Kun
+Message-s‰e sis‰lt‰‰ aina \emph{body}-elementin, jossa on kuljetettava viesti. Viestin pituudelle ei teoriassa ole m‰‰ritetty rajaa,
+mutta asiakasohjelmat saattavat itse lyhent‰‰ viesti‰. S‰e voi sis‰lt‰‰ myˆs \emph{thread}-elementin, jolla ilmoitetaan keskustelu,
+johon viesti liittyy. Mik‰li viestiin tai keskusteluun halutaan m‰‰ritt‰‰ aihe, se voidaan l‰hett‰‰ \emph{subject}-elementiss‰. Kun
 s‰e on rakennettu, se voidaan l‰hett‰‰ palvelimelle, ja palvelin hoitaa s‰keen siirron oikealle vastaanottajalle.
 
 \subsection{Yst‰v‰listan hallinta}
 
 Yst‰v‰lista pit‰‰ sis‰ll‰‰n tiedot k‰ytt‰j‰n listalle lis‰‰mist‰ JID-kontakteista. Yst‰v‰listan s‰ilytyst‰ hallitsee palvelin,
 ja asiakas voi pyyt‰‰ sen erikseen palvelimelta. Yst‰v‰listalle voidaan lis‰t‰ k‰ytt‰ji‰ vain, mik‰li lis‰yksen kohde sallii sen.
-Yst‰v‰pyyntˆ‰ kutsutaan XMPP-terminologiassa tilaukseksi ("subscription"). Asiakas suorittaa tilauksen l‰hett‰m‰ll‰ palvelimelle
-sis‰llˆttˆm‰n presence-s‰keen, jonka "type"-parametrina on "subscribe" ja "to"-parametrina lis‰yksen kohteen JID ilman resurssia.
-Vastaanottaja vastaa t‰h‰n l‰hett‰m‰ll‰ vastaavan paketin, jonka "type"-parametrina on joko "subscribed" (tilattu) tai 
-"unsubscribed" (ei tilattu).
+Yst‰v‰pyyntˆ‰ kutsutaan XMPP-terminologiassa tilaukseksi (subscription). Asiakas suorittaa tilauksen l‰hett‰m‰ll‰ palvelimelle
+sis‰llˆttˆm‰n presence-s‰keen, jonka \emph{type}-parametrina on \emph{subscribe} ja \emph{to}-parametrina lis‰yksen kohteen JID ilman resurssia.
+Vastaanottaja vastaa t‰h‰n l‰hett‰m‰ll‰ vastaavan paketin, jonka \emph{type}-parametrina on joko \emph{subscribed} (tilattu) tai 
+\emph{unsubscribed} (ei tilattu).
 
 \begin{figure}[htp]
 	\centering
@@ -313,12 +327,12 @@ Vastaanottaja vastaa t‰h‰n l‰hett‰m‰ll‰ vastaavan paketin, jonka "type"-parametr
 \subsection{Tilatiedot}
 
 Asiakas voi l‰hett‰‰ yst‰v‰listallaan oleville k‰ytt‰jille tietoja omasta tilastaan, 
-esimerkiksi "poissa" tai "‰l‰ h‰iritse". Asiakas l‰hett‰‰ tilanvaihtopyynnˆn palvelimelle, joka hoitaa sen eteenp‰in yst‰v‰listan 
+esimerkiksi ``poissa'' tai ``‰l‰ h‰iritse''. Asiakas l‰hett‰‰ tilanvaihtopyynnˆn palvelimelle, joka hoitaa sen eteenp‰in yst‰v‰listan 
 kaikille kontakteille. Mik‰li asiakas ei viestit‰ tilaa palvelimelle, voi palvelin myˆs erikseen pyyt‰‰ sit‰. Tilamuutokset 
 l‰hetet‰‰n aina kaikkien kontaktien kaikille resursseille.
 
-Tilanmuutospyyntˆ tehd‰‰n l‰hett‰m‰ll‰ palvelimelle presence-s‰e. Tila ilmoitetaan s‰keess‰ elementiss‰ "show". Asiakas 
-voi myˆs l‰hett‰‰ lis‰tietoja tilasta "status"-elementiss‰. Lis‰tietoelementiss‰ voi olla pitempikin teksti, mutta tilaelementin
+Tilanmuutospyyntˆ tehd‰‰n l‰hett‰m‰ll‰ palvelimelle presence-s‰e. Tila ilmoitetaan s‰keess‰ elementiss‰ \emph{show}. Asiakas 
+voi myˆs l‰hett‰‰ lis‰tietoja tilasta \emph{status}-elementiss‰. Lis‰tietoelementiss‰ voi olla pitempikin teksti, mutta tilaelementin
 sis‰ltˆ on yleens‰ lyhyt. 
 
 \subsection{Tiedostonsiirto}
@@ -344,7 +358,7 @@ tai muiden esteiden takia.
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=0.9\textwidth]{siirtomenetelmat_cmp.png}
+	\includegraphics[scale=0.80]{siirtomenetelmat_cmp.png}
 	\caption{Siirretyn tiedon kokonaism‰‰r‰ tiedostonsiirrossa} 
 	\label{fig:siirtomenetelmat_cmp}
 \end{figure}
@@ -364,7 +378,7 @@ sen odotetaan tulevaisuudessa k‰yt‰nnˆss‰ korvaavan SI File Transfer-laajennukse
 
 \subsection{Avoimuus}
 XMPP-protokolla on t‰ysin avoin, ja kuka tahansa voi k‰ytt‰‰ sit‰ ilman maksuja millek‰‰n taholle. Monet palvelut k‰ytt‰v‰tkin
-protokollaa jo suoraan, tai tarjoavat siltapalvelimen johon XMPP-verkon asiakkaat voivat liitty‰. Siltapalvelimia tarjoavista
+protokollaa jo suoraan tai tarjoavat siltapalvelimen johon XMPP-verkon asiakkaat voivat liitty‰. Siltapalvelimia tarjoavista
 palveluista lˆytyy hyv‰n‰ esimerkkin‰ Facebook~\cite{fbchatapi}.
 
 Suhteessa esimerkiksi MSNP- tai OSCAR-protokolliin, on XMPP helpompi ottaa k‰yttˆˆn omassa sovelluksessa. Sen koko dokumentaatio
@@ -376,26 +390,39 @@ jatkuvasti. P‰ivitysten syyn‰ on usein ominaisuuksien lis‰‰misen lis‰ksi protoko
 
 \subsection{Hyˆtysuhde}
 
-XML-pohjaisten protokollien heikkoutena on pakettien suuri koko ja suhteellisen pieni hyˆtysuhde. Viestipakettien koko voi
-pahimmillaan olla moninkertainen itse paketissa l‰hetett‰v‰‰n tietoon. Kuvassa ~\ref{fig:viestipaketticmpkuva} kuvataan
-standardin viestipaketin kokoa, kun viestin koko on kolme merkki‰ ja paketissa on protokollan kannalta vain kaikkein olennaisin
-tieto. 
+XML-pohjaisten protokollien heikkoutena on pakettien suuri koko ja suhteellisen pieni hyˆtysuhde. XMPP ei ole poikkeus.
+Viestipakettien koko voi pahimmillaan olla moninkertainen itse paketissa l‰hetett‰v‰‰n tietoon. 
+Kuvassa ~\ref{fig:viestipaketticmpkuva} kuvataan standardin viestipaketin kokoa, kun viestin koko on kolme merkki‰ 
+ja paketissa on protokollan kannalta vain kaikkein olennaisin tieto.
 
-\begin{figure}[htp]
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\textwidth]{viestipaketti_cmp.png}
+	\includegraphics[scale=0.80]{viestipaketti_cmp.png}
 	\caption{Viestipaketin koko eri protokollissa} 
 	\label{fig:viestipaketticmpkuva}
 \end{figure}
 
+Vaikka XMPP-protokollan viestielementtien koko saattaakin olla kohtalaisen suuri, ei se v‰ltt‰m‰tt‰ ole ongelma nykyaikaisilla
+Internet-yhteyksill‰. Esimerkiksi bin‰‰ritiedon siirtoon protokollasta lˆytyy hyv‰ll‰kin hyˆtysuhteella varustettuja menetelmi‰.
+Hitaammilla yhteyksill‰ (esimerkiksi heikkolaatuinen GPRS), saattaa esimerkiksi siirtojen vasteajassa n‰ky‰ eroja parempiin 
+yhteyksiin verrattuna.
+
 \subsection{Suojaus}
 
+TLS (Transport Layer Security) on salausprotokolla, jolla voidaan salata Internet-sovellusten 
+tietoliikenne, joka m‰‰ritell‰‰n dokumentissa RFC5246~\cite{rfc5246}. Aiemmin TLS tunnettiin nimell‰ SSL 
+(Secure Sockets Layer). TLS onkin paranneltu versio SSL-protokollasta. Yleisimpi‰ k‰yttˆtarkoituksia
+TLS:lle on muunmuassa WWW-sivujen suojattu siirto HTTPS-protokollalla.
+
 Tiedon salaus on nyky‰‰n t‰rke‰ss‰ osassa erilaisessa viestinn‰ss‰. XMPP-protokolla
-sis‰lt‰‰kin jo m‰‰ritelm‰ss‰‰n tuen yhteyden salaukseen TLS-protokollan yli. Taulukossa
-~\ref{protocol_tls_support} luetellaan muutamien protokollien tilanne yhteyden salaukselle.
+sis‰lt‰‰kin jo m‰‰ritelm‰ss‰‰n tuen yhteyden salaukseen TLS-protokollan yli ~\cite{rfc3920}. Joihinkin vanhempiin
+protokolliin salausmenetelm‰t on lis‰tty j‰lkik‰teen, toisiin taas ei. Esimerkiksi
+yritysten sis‰isess‰ viestinn‰ss‰ tiedon salaus on usein hyvinkin t‰rke‰‰, mik‰li 
+verkossa siirret‰‰n arkaluontoista tietoa. Taulukossa ~\ref{protocol_tls_support} 
+luetellaan muutamien protokollien tilanne yhteyden salaukselle.
 
 \begin{center}
-    \begin{table}
+    \begin{table}[!htb]
         \begin{tabular}{ | p{5cm} | p{10cm} |}
         \hline
         Protokolla & Tuki salaukselle \\ \hline
@@ -414,20 +441,47 @@ sis‰lt‰‰kin jo m‰‰ritelm‰ss‰‰n tuen yhteyden salaukseen TLS-protokollan yli. Tau
 \newpage
 \section{Yhteenveto}
 
-XMPP on nyky‰‰n jo eritt‰in kyps‰ standardi, ja soveltuukin hyvin eri pikaviestinn‰n osa-alueille.
-Vaikka protokollaa ei nyky‰‰n viel‰ k‰ytet‰k‰‰n suurimmissa pikaviestinohjelmista, levi‰‰ se silti 
-pienempien palveluiden kautta ja monien suurempien toimijoiden tuella eteenp‰in. Protokollan suurin
-hyˆty onkin sen avoin dokumentaatio, hyvin suunniteltu m‰‰ritelm‰, yhteensopivuus olemassaolevien
-j‰rjestelmien kanssa v‰lipalvelinj‰rjestelm‰‰ soveltamalla, sek‰ monet eri lisenssein saatavilla olevat
-toteutukset protokollasta.
+Pikaviestint‰ on nyky‰‰n arkea jo tyˆpaikoilla, kouluissa ja muussakin arkiel‰m‰ss‰. Erilaisten
+sovellusten myˆt‰ vaihtoehtoja pikaviestint‰‰n on useita. Vaikka onkin hyv‰ ett‰ jokaiselle lˆytyy 
+varmasti sopiva sovellus, on ongelmana kuitenkin se, ett‰ useimmiten eri sovellukset k‰ytt‰v‰t
+eri verkkoja viestinn‰n v‰litt‰miseen, joista useat ovat tavalla tai toisella aidattuja (``Walled garden'').
+Niinp‰ k‰ytt‰j‰t usein tarvitsevatkin useita ohjelmia viesti‰kseen kaikkien eri verkkoja k‰ytt‰vien 
+tuttujensa kanssa.
 
-XMPP onkin hyv‰n rakenteensa ja avoimuutensa ansiosta saanut jo suuren joukon laajennuksia. Protokollan
-ydinm‰‰ritelm‰st‰ taas on l‰hiaikoina tulossa uusi versio, johon on sis‰llytetty monia t‰rkeimmist‰ 
-laajennuksista. XMPP onkin jatkuvan kehityksen ja parantuvan ohjelmatuen ansiosta valmis sopeutumaan myˆs 
-tulevaisuuden pikaviestinn‰n luomiin vaatimuksiin ja haasteisiin.
+XMPP on er‰s ratkaisu verkkojen m‰‰r‰‰n. Sen tarkoituksena on luoda yksi tarkkaan m‰‰ritelty ja 
+vapaasti k‰ytett‰viss‰ oleva standardi, jota kuka tahansa voi k‰ytt‰‰ ja joka soveltuu useimmille
+pikaviestinn‰n osa-alueille. Vaikka protokollaa ei nyky‰‰n viel‰ k‰ytet‰k‰‰n suurimmissa 
+pikaviestinohjelmista, levi‰‰ se silti pienempien palveluiden kautta ja monien suurempien yritysten 
+tuella eteenp‰in. Protokollan suurin hyˆty onkin sen avoin dokumentaatio, hyvin suunniteltu m‰‰ritelm‰, 
+yhteensopivuus olemassaolevien j‰rjestelmien kanssa v‰lipalvelinj‰rjestelm‰‰ soveltamalla 
+sek‰ monet eri lisenssein saatavilla olevat ohjelmistototeutukset protokollasta.
+
+Koska XMPP on alusta l‰htien suunniteltu laajennettavaksi, on se sovitettavissa hyvinkin erilaisiin
+tarkoituksiin. Protokolla onkin jo saanut useita laajennuksia. Protokollan ydinm‰‰ritelm‰st‰ taas on 
+juuri julkaistu uusi versio, johon on sis‰llytetty monia t‰rkeimmist‰ laajennuksista. XMPP onkin 
+avoimuuden, jatkuvan kehityksen ja parantuvan ohjelmatuen ansiosta harkinnanarvoinen ratkaisu uusiin 
+pikaviestinsovelluksiin.
 
 \newpage
 \begin{thebibliography}{99}
+
+\bibitem{about_xmpp}
+The XMPP Standards foundation,
+\textit{"About The Extensible Messaging and Presence Protocol"},
+Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/about-xmpp/}>,
+viitattu 17.1.2012.
+
+\bibitem{im_at_work}
+Ann Frances Cameron, Jane Webster,
+\textit{"Unintended consequences of emerging communication technologies: Instant Messaging in the workplace"},
+Saatavilla osoitteesta <URL: \texttt{http://www.sciencedirect.com/science/article/pii/S0747563203001109}>,
+School of Business, Queen\'s University, 24.1.2004, Kanada.
+
+\bibitem{im_at_school}
+Andrew J. Flanagin,
+\textit{"IM Online: Instant Messaging Use Among College Students"},
+Saatavilla osoitteesta <URL: \texttt{http://www.tandfonline.com/doi/abs/10.1080/00036810500206966}>,
+University of California, 16.8.2006, Yhdysvallat.
 
 \bibitem{rfc3920}
 P. Saint-Andre, 
@@ -447,28 +501,11 @@ P. Saint-Andre,
 Saatavilla osoitteesta <URL: \texttt{http://tools.ietf.org/html/rfc3922}>,
 lokakuu 2004, RFC-3922.
 
-\bibitem{helxmpp}
-Mikko Laukkanen,
-\textit{"Extensible Messaging and Presence Protocol (XMPP)"},
-Saatavilla osoitteesta <URL: \texttt{http://www.cs.helsinki.fi/u/kraatika/Courses/IPsem04s/xmpp.pdf}>, 
-Helsingin yliopisto, viitattu 15.3.2008.
-
-\bibitem{xep0166}
-Scott Ludwig, Joe Beda, Peter Saint-Andre, Robert McQueen, Sean Egan ja Joe hildebrand, 
-\textit{"XEP-0166: Jingle"},
-Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/extensions/xep-0166.html}>,
-29.2.2008.
-
-\bibitem{salin}
-Peter Salin, 
-\textit{"Mobile Instant Messaging Systems - A Comparative Study and Implementation"},
-Saatavilla osoitteesta <URL: \texttt{http://www.tml.tkk.fi/anttiyj/Salin-IMPS.pdf}>,
-Teknillinen korkeakoulu, 21.9.2004.
-
-\bibitem{xmpporg1}
-\textit{"Jabber Software Foundation Renamed to XMPP Standards Foundation"},
-Saatavilla osoitteesta <URL: \texttt{http://www.xmpp.org/xsf/press/2007-01-16.shtml}>,
-XMPP standards foundation, 16.1.2007, Denver, Yhdysvallat.
+\bibitem{rfc5246}
+T. Dierks, E. Rescorla,
+\textit{"The Transport Layer Security (TLS) Protocol"},
+Saatavilla osoitteesta <URL: \texttt{http://tools.ietf.org/html/rfc5246}>,
+elokuu 2008.
 
 \bibitem{wiki1}
 Wikipedia, 
@@ -481,6 +518,12 @@ Salman A. Baset, Henning Schulzrinne,
 \textit{"An Analysis of the Skype Peer-to-Peer Internet Telephony Protocol"},
 Saatavilla osoitteesta <URL: \texttt{http://arxiv.org/pdf/cs/0412017}>,
 Columbia University, New York, Yhdysvallat, 15.9.2004.
+
+\bibitem{skype_reversed}
+Matthew Humphries,
+\textit{"The Skype protocol has been reverse engineered "},
+Saatavilla osoitteesta <URL: \texttt{http://www.geek.com/articles/news/the-skype-protocol-has-been-reverse-engineered-2011062/}>,
+viitattu 17.1.2012.
 
 \bibitem{msnp}
 MSNPiki, 
@@ -512,6 +555,12 @@ Justin Karneges, Peter Saint-Andre,
 Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0047.html}>,
 1.3.2011, XEP-0047.
 
+\bibitem{xep0060}
+Peter Millard, Peter Saint-Andre, Ralph Meijer,
+\textit{"XEP-0060: Publish-Subscribe"}
+Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0060.html}>,
+11.7.2010, XEP-0060.
+
 \bibitem{xep0066}
 Peter Saint-Andre,
 \textit{"XEP-0066: Out of Band Data"}
@@ -537,8 +586,6 @@ Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0065.html}>,
 20.4.2011, XEP-0065.
 
 
-
-
 \end{thebibliography}
 
 \newpage
@@ -552,7 +599,7 @@ Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0065.html}>,
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[scale=0.8]{yhteys.png}
+	\includegraphics[scale=0.70]{yhteys_muodostus.png}
 	\caption{Yhteyden hallinta} 
 	\label{yhteyskuva}
 \end{figure}

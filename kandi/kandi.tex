@@ -21,7 +21,7 @@ esimerkiksi tiedostonsiirtoihin ja VoIP-puheluihin. T‰ss‰ tutkielmassa tutustuta
 teknisiin ominaisuuksiin ja tehd‰‰n vertailuja muihin pikaviestinprotokolliin.}
 \keywords{XMPP, Protocol, instant messaging}
 \avainsanat{XMPP, protokolla, pikaviestint‰}
-\setdate{18}{01}{2012}
+\setdate{19}{01}{2012}
 \tyyppi{kandidaatintutkielma}
 
 \begin{document}
@@ -195,7 +195,7 @@ toiselta entiteetilt‰. Esimerkiksi Iq-paketti on tyypilt‰‰n t‰llainen.
 
 XMPP-verkko on hajautettu, ja palvelimia voi olla useita. Palvelimet voivat olla yhteydess‰ toisiinsa
 suoraan, tai v‰lipalvelimien v‰lityksell‰. Asiakkaat voivat halutessaan ottaa yhteyden mihin tahansa verkon
-palvelimista. Kuvaajassa ~\ref{fig:verkkokuva} kuvataan verkon rakennetta.
+palvelimista. Kuvaajassa~\ref{fig:verkkokuva} kuvataan verkon rakennetta.
 
 \begin{figure}[htp]
 	\centering
@@ -207,10 +207,10 @@ palvelimista. Kuvaajassa ~\ref{fig:verkkokuva} kuvataan verkon rakennetta.
 \subsection{Palvelin}
 
 Vaikka XMPP:n m‰‰ritelm‰ss‰ ei varsinaisesti m‰‰ritell‰ miten viestej‰ l‰hetet‰‰n, 
-k‰ytet‰‰n protokollaa yleens‰ asiakas-palvelin-arkkitehtuurilla. Erona useisiin muihin 
-tunnettuihin pikaviestinprotokolliin, kuten OSCAR ja MSNP on kuitenkin se, ett‰ XMPP-verkolla ei ole 
-yht‰ keskitetty‰ autentikaatiopalvelinta. K‰yt‰nnˆss‰ siis kuka tahansa voi ajaa omaa palvelintaan, ja 
-liitt‰‰ sen osaksi suurempaa verkkoa.
+k‰ytet‰‰n protokollaa yleens‰ asiakas-palvelin-arkkitehtuurilla. Erona t‰ss‰ useisiin muihin 
+tunnettuihin pikaviestinprotokolliin, kuten OSCAR ja MSNP verrattuna on kuitenkin se, ett‰ XMPP-verkolla 
+ei ole yht‰ keskitetty‰ autentikaatiopalvelinta. K‰yt‰nnˆss‰ siis kuka tahansa voi ajaa omaa 
+palvelintaan, ja liitt‰‰ sen osaksi suurempaa verkkoa.
 
 Palvelimen teht‰v‰n‰ XMPP-verkossa on TCP-yhteyksien vastaanotto sek‰ liikenteen v‰litt‰minen 
 muille autentikoiduille k‰ytt‰jille, palvelimille ja muille kohteille. Palvelin myˆs reititt‰‰ 
@@ -220,12 +220,12 @@ tietoja, kuten kontaktilistan, joka voi sis‰lt‰‰ muita k‰ytt‰ji‰ mist‰ tahansa l
 \subsection{Asiakas}
 
 Asiakas luo yhteyden palvelimeen TCP-protokollan yli tiettyyn palvelimen porttiin. Internet Assigned Numbers 
-Authority (IANA) on m‰‰ritellyt XMPP-protokollan k‰yttˆˆn portin 5222, mutta muitakin saattaa olla k‰ytˆss‰. 
+Authority (IANA) on m‰‰ritellyt XMPP-protokollan k‰yttˆˆn portin 5222, mutta muitakin voi olla k‰ytˆss‰. 
 Asiakkaan teht‰v‰n‰ on l‰hett‰‰ viestej‰ ja tilatietoja palvelimelle, sek‰ vastaanottaa niit‰ palvelimelta. 
 Asiakkaan on osattava v‰hint‰‰n avata yhteys XML-viestien l‰hett‰mist‰ ja vastaanottamista varten.
 
 XMPP-verkossa jokaista asiakasta tai p‰‰tepistett‰ kutsutaan entiteetiksi, jolla on aina oma tunnisteensa 
-nimelt‰‰n JID. Tunniste on kolmiosainen, esimerkiksi muotoa \emph{solmu@toimialue/resurssi}. Tunnisteessa 
+nimelt‰‰n \emph{JID}. Tunniste on kolmiosainen, esimerkiksi muotoa \emph{solmu@toimialue/resurssi}. Tunnisteessa 
 toimialue-kentt‰ m‰‰rittelee k‰ytetyn palvelimen osoitteen, solmu-kentt‰ k‰ytt‰j‰n nimen ja resurssi-kentt‰
 k‰ytt‰j‰lle kuuluvan toisen asiakaslaitteen. Protokolla salliikin useampien asiakasohjelmien kirjautumisen 
 samalle palvelimelle samalla k‰ytt‰j‰tunnuksella, kunhan eri ohjelmille m‰‰ritell‰‰n oma kotiosoitteensa. 
@@ -599,9 +599,7 @@ Saatavilla osoitteesta <URL: \texttt{http://xmpp.org/extensions/xep-0065.html}>,
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[scale=0.70]{yhteys_muodostus.png}
-	\caption{Yhteyden hallinta} 
-	\label{yhteyskuva}
+	\includegraphics[scale=0.75]{yhteys_muodostus.png}
 \end{figure}
 
 
